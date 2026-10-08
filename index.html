@@ -69,7 +69,7 @@
       background: var(--surface-glass); backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid rgba(255,255,255,0.05); 
-      z-index: 1002; /* ARTIRILDI */
+      z-index: 1002;
       display: flex; align-items: center;
       transition: background 0.3s ease, backdrop-filter 0.3s ease, -webkit-backdrop-filter 0.3s ease, border-color 0.3s ease;
     }
@@ -108,7 +108,7 @@
       border-radius: 12px;
       cursor: pointer;
       position: relative;
-      z-index: 1003; /* HAMBURGER DAHA YÜKSEK */
+      z-index: 1003;
       padding: 0;
     }
     .menu-toggle span {
@@ -129,7 +129,7 @@
     .menu-toggle.active span:nth-child(2) { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
     .menu-toggle.active span:nth-child(3) { bottom: 50%; transform: translate(-50%, 50%) rotate(-45deg); }
 
-    /* Mobil menü (tam ekran, koyu arka planlı) */
+    /* Mobil menü */
     .mobile-menu {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -144,7 +144,7 @@
       gap: 1.2rem;
       transform: translateX(100%);
       transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
-      z-index: 1001; /* HEADER'IN ALTINDA, İÇERİĞİN ÜSTÜNDE */
+      z-index: 1001;
       padding: 2rem;
     }
     .mobile-menu.active { transform: translateX(0); }
@@ -381,7 +381,7 @@
         <div class="hero-content fade-in-up">
           <div class="status-badge"><span style="display:block; width:8px; height:8px; background:#22c55e; border-radius:50%; box-shadow:0 0 10px #22c55e"></span> Aktif Hizmet Veriliyor</div>
           <h1>Beşiktaş'ın <br><span class="text-gradient">Teknoloji Çözüm</span> Noktası</h1>
-          <p>Bilgisayarınız yavaş mı? Akıllı tahta kurulumu mu gerekiyor? Abbasağa ve çevresinde en hızlı, güvenilir ve uygun fiyatlı teknik servis hizmeti.</p>
+          <p>Bilgisayarınız yavaş mı? Laptop bakımı mı gerekiyor? Abbasağa ve çevresinde en hızlı, güvenilir ve uygun fiyatlı teknik servis hizmeti.</p>
           <div class="hero-actions">
             <div class="btn-row">
               <a href="tel:+905523875272" class="btn btn-primary btn-pulse"><i class="fa-solid fa-phone"></i> Hemen Ara</a>
@@ -415,10 +415,11 @@
         <div class="cards-grid">
           <div class="service-card fade-in-up delay-100"><div class="icon-box"><i class="fa-solid fa-screwdriver-wrench"></i></div><h3>Tamir & Bakım</h3><p style="color:var(--text-muted); margin-top:0.8rem">Anakart tamiri, ekran değişimi, termal macun yenileme ve fan temizliği.</p></div>
           <div class="service-card fade-in-up delay-200"><div class="icon-box"><i class="fa-brands fa-windows"></i></div><h3>Windows Optimizasyon</h3><p style="color:var(--text-muted); margin-top:0.8rem">Format, driver kurulumları ve sistem hızlandırma işlemleri.</p></div>
-          <div class="service-card fade-in-up delay-300"><div class="icon-box"><i class="fa-solid fa-chalkboard-user"></i></div><h3>Akıllı Tahta Kurulumu</h3><p style="color:var(--text-muted); margin-top:0.8rem">Okullar ve ofisler için kurulum, yazılım ve eğitim.</p></div>
+          <div class="service-card fade-in-up delay-300"><div class="icon-box"><i class="fa-solid fa-code"></i></div><h3>Web Tasarım & Kurulum</h3><p style="color:var(--text-muted); margin-top:0.8rem">Kişisel blog, kurumsal firma sitesi veya e-ticaret. Sıfırdan anahtar teslim, mobil uyumlu web sitesi yapımı.</p></div>
           <div class="service-card fade-in-up delay-100"><div class="icon-box"><i class="fa-solid fa-hard-drive"></i></div><h3>Veri Kurtarma & Yedek</h3><p style="color:var(--text-muted); margin-top:0.8rem">Silinen dosyaları kurtarma, SSD'ye geçiş ve yedekleme.</p></div>
           <div class="service-card fade-in-up delay-200"><div class="icon-box"><i class="fa-solid fa-virus-slash"></i></div><h3>Virüs Temizleme</h3><p style="color:var(--text-muted); margin-top:0.8rem">Fidye yazılımları ve truva atlarına karşı garantili temizlik.</p></div>
-          <div class="service-card fade-in-up delay-300"><div class="icon-box"><i class="fa-solid fa-tags"></i></div><h3>Yedek Parça Temini</h3><p style="color:var(--text-muted); margin-top:0.8rem">Orijinal ve muadil parçalar en iyi fiyatla.</p></div>
+          <div class="service-card fade-in-up delay-300"><div class="icon-box"><i class="fa-solid fa-tags"></i></div><h3>Yedek Parça Temini</h3><p style="color:var(--text-muted); margin-top:0.8rem">Bütçenize uygun orijinal veya 1. sınıf muadil parçaları en iyi fiyat garantisiyle buluyoruz.</p></div>
+          <div class="service-card fade-in-up delay-100"><div class="icon-box"><i class="fa-solid fa-gauge-high"></i></div><h3>Ultra Performans Optimizasyonu</h3><p style="color:var(--text-muted); margin-top:0.8rem">Yavaş bilgisayarlarınızı hızlandırıyoruz. RAM yükseltme, SSD takviyesi ve yazılımsal optimizasyonlarla maksimum performans.</p></div>
         </div>
       </div>
     </section>
@@ -453,23 +454,23 @@
             <h3>Akıllı Tahtalar</h3>
             <p style="color:var(--text-muted); margin-top:0.5rem; font-size:0.9rem">Eğitim kurumları için bilgilendirme arayüzü.</p>
           </a>
-          <a href="Siteler/Anime Site/index.html" target="_blank" class="project-card fade-in-up delay-200">
+          <a href="https://havakare.com/" target="_blank" class="project-card fade-in-up delay-200">
+            <i class="fa-solid fa-arrow-up-right-from-square project-link-icon"></i>
+            <i class="fa-solid fa-wind project-icon" style="color:#0ea5e9"></i>
+            <h3>Havakare</h3>
+            <p style="color:var(--text-muted); margin-top:0.5rem; font-size:0.9rem">Modern ve mobil uyumlu kurumsal web sitesi projesi.</p>
+          </a>
+          <a href="Siteler/Anime Site/index.html" target="_blank" class="project-card fade-in-up delay-300">
             <i class="fa-solid fa-arrow-up-right-from-square project-link-icon"></i>
             <i class="fa-solid fa-eye project-icon" style="color:#9333ea"></i>
             <h3>Anime Portalı</h3>
             <p style="color:var(--text-muted); margin-top:0.5rem; font-size:0.9rem">Modern, karanlık modlu manga & anime arayüzü.</p>
           </a>
-          <a href="Siteler/Fitness site/index.html" target="_blank" class="project-card fade-in-up delay-300">
+          <a href="Siteler/Fitness site/index.html" target="_blank" class="project-card fade-in-up delay-100">
             <i class="fa-solid fa-arrow-up-right-from-square project-link-icon"></i>
             <i class="fa-solid fa-dumbbell project-icon" style="color:#ef4444"></i>
             <h3>Fitness & Spor</h3>
             <p style="color:var(--text-muted); margin-top:0.5rem; font-size:0.9rem">Spor salonu tanıtım ve antrenman sitesi.</p>
-          </a>
-          <a href="Siteler/SA Yapı İnşaat Site/index.html" target="_blank" class="project-card fade-in-up delay-100">
-            <i class="fa-solid fa-arrow-up-right-from-square project-link-icon"></i>
-            <i class="fa-solid fa-helmet-safety project-icon" style="color:#f59e0b"></i>
-            <h3>SA Yapı İnşaat</h3>
-            <p style="color:var(--text-muted); margin-top:0.5rem; font-size:0.9rem">Kurumsal inşaat firması web sitesi.</p>
           </a>
           <a href="Siteler/usta dokunuşu teknik servis/index.html" target="_blank" class="project-card fade-in-up delay-200">
             <i class="fa-solid fa-arrow-up-right-from-square project-link-icon"></i>
@@ -477,7 +478,19 @@
             <h3>Usta Dokunuş Teknik Servis</h3>
             <p style="color:var(--text-muted); margin-top:0.5rem; font-size:0.9rem">Esenyurt beyaz eşya, kombi ve klima servisi tanıtım sitesi.</p>
           </a>
-          <a href="Siteler/Obez-Bili-im-main/index.html" target="_blank" class="project-card fade-in-up delay-300">
+          <a href="https://ustaellerteknikservis.com/" target="_blank" class="project-card fade-in-up delay-300">
+            <i class="fa-solid fa-arrow-up-right-from-square project-link-icon"></i>
+            <i class="fa-solid fa-toolbox project-icon" style="color:#16a34a"></i>
+            <h3>Usta Eller Teknik Servis</h3>
+            <p style="color:var(--text-muted); margin-top:0.5rem; font-size:0.9rem">Beyaz eşya ve teknik servis hizmetleri için kurumsal tanıtım sitesi.</p>
+          </a>
+          <a href="Siteler/SA Yapı İnşaat Site/index.html" target="_blank" class="project-card fade-in-up delay-100">
+            <i class="fa-solid fa-arrow-up-right-from-square project-link-icon"></i>
+            <i class="fa-solid fa-helmet-safety project-icon" style="color:#f59e0b"></i>
+            <h3>SA Yapı İnşaat</h3>
+            <p style="color:var(--text-muted); margin-top:0.5rem; font-size:0.9rem">Kurumsal inşaat firması web sitesi.</p>
+          </a>
+          <a href="Siteler/Obez-Bili-im-main/index.html" target="_blank" class="project-card fade-in-up delay-200">
             <i class="fa-solid fa-arrow-up-right-from-square project-link-icon"></i>
             <i class="fa-solid fa-laptop-code project-icon" style="color:#4f46e5"></i>
             <h3>Obez Bilişim</h3>
