@@ -2,688 +2,517 @@
 <html lang="tr">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Orkun Tarlacı – Profesyonel Bilgisayar & IT Çözümleri</title>
-  <meta name="description" content="Beşiktaş'ta garantili bilgisayar tamiri, akıllı tahta kurulumu, sistem hızlandırma ve IT desteği. Hızlı, güvenilir ve yerinde servis.">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Orkun Tarlacı — Bilgisayar tamiri ve web sitesi, Beşiktaş</title>
+  <meta name="description" content="Beşiktaş Abbasağa'da bilgisayar tamiri, format, hızlandırma, veri kurtarma. Mahalle esnafına web sitesi. 0552 387 52 72">
+  <meta name="theme-color" content="#111111">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 fill=%22%23111%22/><text x=%2232%22 y=%2248%22 font-family=%22Arial Black,sans-serif%22 font-size=%2244%22 font-weight=%22900%22 fill=%22%23a08672%22 text-anchor=%22middle%22>O</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders:wght@800&family=Public+Sans:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #4f46e5;
-      --primary-light: #818cf8;
-      --secondary: #9333ea;
-      --accent: #06b6d4;
-      --bg: #000000;
-      --surface: #0a0a0c;
-      --surface-glass: rgba(10, 10, 12, 0.88);
-      --text: #f8fafc;
-      --text-muted: #94a3b8;
-      --border: #18181b;
-      --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.8);
-      --shadow-lg: 0 20px 50px -12px rgba(0, 0, 0, 0.9);
-      --glow: 0 0 25px rgba(99, 102, 241, 0.25);
-      --radius: 20px;
-      --container: 1150px;
-      --nav-height: 80px;
+      --bg: #111111;
+      --surface: #1c1c1c;
+      --raised: #262626;
+      --ink: #f2f2f2;
+      --muted: #9a9a9a;
+      --accent: #a08672;
+      --accent-ink: #111111;
+
+      --display: 'Big Shoulders', 'Arial Narrow', sans-serif;
+      --text: 'Public Sans', system-ui, sans-serif;
+
+      --step-small: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
+      --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+      --step-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+      --step-head: clamp(2.5rem, 1.2rem + 5vw, 5.5rem);
+      --step-name: clamp(6rem, 1rem + 17vw, 17rem);
+
+      --margin: clamp(16px, 2vw, 28px);
+      --gap: clamp(120px, 14vw, 200px);
+      --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { 
-      scroll-behavior: smooth; 
-      scroll-padding-top: calc(var(--nav-height) + 20px); 
-      color-scheme: dark;
-    }
+    html { color-scheme: dark; -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--bg);
-      background-image: radial-gradient(var(--border) 1px, transparent 1px),
-                        radial-gradient(at 0% 0%, rgba(79, 70, 229, 0.12) 0px, transparent 50%),
-                        radial-gradient(at 100% 100%, rgba(147, 51, 234, 0.12) 0px, transparent 50%);
-      background-size: 24px 24px, 100% 100%, 100% 100%;
-      background-attachment: fixed;
-      color: var(--text);
-      line-height: 1.6;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--text);
+      font-size: var(--step-body);
+      line-height: 1.5;
       overflow-x: hidden;
     }
-    h1, h2, h3, .brand { font-family: 'Outfit', sans-serif; letter-spacing: -0.02em; }
-    a { text-decoration: none; color: inherit; transition: 0.3s ease; }
-    ul { list-style: none; }
-    img { max-width: 100%; display: block; }
-    .container { width: 90%; max-width: var(--container); margin-inline: auto; }
-    .section-padding { padding-block: 100px; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+    button { font: inherit; color: inherit; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    ::selection { background: var(--accent); color: var(--accent-ink); }
 
-    /* Header */
-    header {
-      position: fixed; top: 0; left: 0; right: 0; height: var(--nav-height);
-      background: var(--surface-glass); backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border); 
-      z-index: 1002;
-      display: flex; align-items: center;
-      transition: background 0.3s ease, backdrop-filter 0.3s ease, -webkit-backdrop-filter 0.3s ease, border-color 0.3s ease;
-    }
-    header.menu-open {
-      background: transparent;
-      backdrop-filter: none;
-      -webkit-backdrop-filter: none;
-      border-bottom: transparent;
-    }
-    header .container { display: flex; justify-content: space-between; align-items: center; height: 100%; }
-    .brand { font-weight: 800; font-size: 1.4rem; display: flex; align-items: center; gap: 0.6rem; }
-    .brand i { color: var(--primary); filter: drop-shadow(0 0 10px rgba(79,70,229,0.5)); }
-    .desktop-nav { display: flex; gap: 2.5rem; align-items: center; }
-    .desktop-nav a.nav-item { font-weight: 500; font-size: 0.95rem; color: var(--text-muted); position: relative; padding: 5px 0; }
-    .desktop-nav a.nav-item:hover { color: var(--text); }
-    .desktop-nav a.nav-item::after {
-      content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
-      transition: 0.3s; border-radius: 2px;
-    }
-    .desktop-nav a.nav-item:hover::after { width: 100%; }
-    .phone-link {
-      color: var(--primary-light); font-weight: 700; margin-left: 1rem;
-      display: flex; align-items: center; gap: 0.5rem;
-      padding: 0.5rem 1rem; background: rgba(79, 70, 229, 0.15);
-      border-radius: 50px; transition: all 0.3s ease;
-    }
-    .phone-link:hover { background: rgba(79, 70, 229, 0.25); transform: translateY(-2px); }
-
-    /* Hamburger */
-    .menu-toggle {
-      display: none;
-      width: 44px; height: 44px;
-      background: transparent;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      cursor: pointer;
-      position: relative;
-      z-index: 1003;
-      padding: 0;
-    }
-    .menu-toggle span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--text);
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      transition: 0.3s cubic-bezier(0.68, -0.6, 0.32, 1.6);
-      border-radius: 2px;
-    }
-    .menu-toggle span:nth-child(1) { top: 12px; }
-    .menu-toggle span:nth-child(2) { top: 50%; transform: translate(-50%, -50%); }
-    .menu-toggle span:nth-child(3) { bottom: 12px; }
-    .menu-toggle.active span:nth-child(1) { top: 50%; transform: translate(-50%, -50%) rotate(45deg); }
-    .menu-toggle.active span:nth-child(2) { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-    .menu-toggle.active span:nth-child(3) { bottom: 50%; transform: translate(-50%, 50%) rotate(-45deg); }
-
-    /* Mobil menü */
-    .mobile-menu {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.96);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 1.2rem;
-      transform: translateX(100%);
-      transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
-      z-index: 1001;
-      padding: 2rem;
-    }
-    .mobile-menu.active { transform: translateX(0); }
-    .mobile-menu a.nav-item {
-      font-size: 1.6rem;
-      font-weight: 600;
-      color: #ffffff;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 14px 24px;
-      border-radius: 14px;
-      transition: background 0.25s, transform 0.2s;
-      width: auto;
-      min-width: 250px;
-      justify-content: center;
-    }
-    .mobile-menu a.nav-item i {
-      width: 28px;
-      text-align: center;
-      font-size: 1.4rem;
-      color: #a5b4fc;
-    }
-    .mobile-menu a.nav-item:hover {
-      background: rgba(255, 255, 255, 0.08);
-      transform: scale(1.03);
-    }
-    .mobile-menu .phone-link {
-      margin-top: 0.8rem;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: white;
-      padding: 14px 28px;
-      border-radius: 14px;
-      font-weight: 600;
-      font-size: 1.2rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      box-shadow: 0 10px 25px rgba(79, 70, 229, 0.4);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .mobile-menu .phone-link:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 15px 30px rgba(79, 70, 229, 0.55);
-    }
-
-    /* Hero */
-    .hero { min-height: 95vh; display: flex; align-items: center; padding-top: var(--nav-height); position: relative; }
-    .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4rem; align-items: center; }
-    .hero-content h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.1; margin-bottom: 1.5rem; }
-    .text-gradient { background: linear-gradient(135deg, var(--primary-light) 0%, var(--secondary) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .hero-content p { font-size: 1.125rem; color: var(--text-muted); margin-bottom: 2.5rem; max-width: 45ch; line-height: 1.7; }
-    .hero-actions { display: flex; flex-direction: column; gap: 1.2rem; align-items: flex-start; }
-    .btn-row { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
-      padding: 0.9rem 1.8rem; border-radius: 50px; font-weight: 600;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; font-size: 0.95rem;
-      position: relative; overflow: hidden; border: none; background: none;
-    }
-    .btn-primary {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: white; box-shadow: 0 10px 20px -10px rgba(79, 70, 229, 0.5);
-    }
-    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 30px -10px rgba(79, 70, 229, 0.6); }
-    .btn-pulse { animation: pulse-shadow 2s infinite; }
-    @keyframes pulse-shadow {
-      0% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.7); }
-      70% { box-shadow: 0 0 0 10px rgba(79, 70, 229, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0); }
-    }
-    .btn-outline {
-      border: 2px solid var(--border); color: var(--text);
-      background: var(--surface);
-    }
-    .btn-outline:hover { border-color: var(--text); background: var(--text); color: var(--bg); }
-    .btn-map {
-      width: 100%; max-width: 350px;
-      background: rgba(6, 182, 212, 0.1); color: #22d3ee;
-      border: 1px solid rgba(6, 182, 212, 0.2);
-    }
-    .btn-map:hover { background: rgba(6, 182, 212, 0.15); transform: translateY(-2px); }
-    .hero-card-wrapper { animation: float 6s ease-in-out infinite; }
-    @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-20px); } 100% { transform: translateY(0px); } }
-    .hero-card {
-      background: var(--surface); border: 1px solid var(--border);
-      backdrop-filter: blur(24px); padding: 3rem; border-radius: 30px;
-      text-align: center; box-shadow: var(--shadow-lg), inset 0 0 0 1px rgba(255,255,255,0.03);
-      position: relative; overflow: hidden;
-    }
-    .status-badge {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: rgba(34, 197, 94, 0.1); color: #22c55e;
-      padding: 0.35rem 1rem; border-radius: 100px;
-      font-size: 0.85rem; font-weight: 600; margin-bottom: 1.5rem;
-      border: 1px solid rgba(34, 197, 94, 0.2);
-    }
-
-    /* Section Header */
-    .section-header { text-align: center; margin-bottom: 4rem; max-width: 700px; margin-inline: auto; }
-    .section-header h2 { font-size: 2.8rem; margin-bottom: 1.0rem; background: linear-gradient(to right, var(--text), var(--text-muted)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-
-    /* ============ ORTAK KART TASARIMI (Hizmetler ve Projeler) ============ */
-    .projects-grid, .services-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.4rem;
-    }
-    
-    .project-card, .service-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 2.5rem 1.4rem 0 1.4rem;
-      transition: all 0.35s ease;
-      position: relative;
-      overflow: hidden;
-      min-height: 320px;
-      width: 260px;
-      flex: 1 1 260px;
-      max-width: 320px;
-    }
-    .project-card:hover, .service-card:hover {
-      transform: translateY(-6px);
-      border-color: var(--primary);
-      box-shadow: var(--shadow-lg), var(--glow);
-    }
-    .project-icon, .service-icon {
-      font-size: 2.6rem;
-      color: var(--primary);
-      margin-bottom: 1.4rem;
-      transition: 0.35s ease;
-      line-height: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .project-card:hover .project-icon, .service-card:hover .service-icon {
-      transform: scale(1.12);
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .project-card h3, .service-card h3 {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 0.7rem;
-      line-height: 1.3;
-    }
-    .project-card > p, .service-card > p {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      line-height: 1.6;
-      flex-grow: 1;
-    }
-    .project-cta, .service-cta {
-      margin-top: 1.6rem;
-      margin-left: -1.4rem;
-      margin-right: -1.4rem;
-      padding: 1.1rem 1rem;
-      border-top: 1px solid var(--border);
-      color: var(--primary-light);
-      font-weight: 700;
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
+    .display {
+      font-family: var(--display);
+      font-weight: 800;
       text-transform: uppercase;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      transition: 0.3s ease;
-      width: calc(100% + 2.8rem);
+      letter-spacing: -0.005em;
+      line-height: 0.86;
+      font-kerning: normal;
     }
-    .project-cta i, .service-cta i {
-      transition: transform 0.3s ease;
-      font-size: 0.8rem;
-    }
-    .project-card:hover .project-cta, .service-card:hover .service-cta {
-      background: rgba(79, 70, 229, 0.08);
-      color: var(--secondary);
-    }
-    .project-card:hover .project-cta i, .service-card:hover .service-cta i { transform: translateX(5px); }
+    .wrap { padding-inline: var(--margin); }
 
-    /* About */
-    .about-container { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-    .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-    .stat-box { text-align: center; padding: 2rem; background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow-lg); }
-    .stat-number { font-size: 2.5rem; font-weight: 800; display: block; margin-bottom: 0.5rem; }
+    /* Düğmeler: köşesiz, tek dolgu */
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.6em;
+      min-height: 52px; padding: 0 1.4em;
+      background: var(--accent); color: var(--accent-ink);
+      font-weight: 600; text-decoration: none;
+      transition: transform 0.25s var(--ease), background-color 0.25s var(--ease);
+    }
+    .btn:hover { background: #b39883; transform: translateY(-2px); }
+    .btn:active { transform: translateY(0) scale(0.98); }
+    .btn svg { width: 1.1em; height: 1.1em; flex: none; }
+    .link {
+      display: inline-flex; align-items: center; gap: 0.45em; min-height: 44px;
+      font-weight: 600; text-decoration: underline; text-underline-offset: 0.3em; text-decoration-thickness: 2px;
+      text-decoration-color: var(--muted);
+      transition: text-decoration-color 0.2s, gap 0.25s var(--ease);
+    }
+    .link:hover { text-decoration-color: var(--ink); gap: 0.7em; }
 
-    /* Contact */
-    .contact-wrapper {
-      background: var(--surface); border-radius: 32px; padding: 4rem 2rem;
-      border: 1px solid var(--border); box-shadow: var(--shadow-lg);
-      text-align: center; position: relative; overflow: hidden;
+    /* ---------- Giriş ekranı: isim iki köşede ---------- */
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      grid-template-columns: 7fr 5fr;
+      gap: var(--margin);
+      padding: var(--margin);
     }
-    .contact-wrapper::after {
-      content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px;
-      background: linear-gradient(90deg, var(--accent), var(--secondary), var(--primary));
+    .hero-text {
+      display: flex; flex-direction: column; justify-content: space-between;
+      min-height: calc(100svh - 2 * var(--margin));
+      gap: 32px;
     }
-    .contact-methods { display: flex; justify-content: center; gap: 2rem; margin-top: 3rem; flex-wrap: wrap; }
-    .contact-item {
-      display: flex; flex-direction: column; align-items: center; gap: 0.8rem;
-      width: 180px; padding: 2rem 1rem; border-radius: 24px;
-      border: 1px solid var(--border); transition: 0.4s; background: var(--bg); cursor: pointer;
+    .hero-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; }
+    .name { font-size: var(--step-name); }
+    .name-first { display: block; }
+    .name-last { display: block; text-align: right; }
+    .hero nav { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; padding-top: 8px; }
+    .hero nav a { font-size: var(--step-small); font-weight: 600; text-decoration: none; min-height: 32px; display: inline-flex; align-items: center; color: var(--muted); transition: color 0.2s; }
+    .hero nav a:hover { color: var(--ink); }
+    .hero-middle { max-width: 34ch; margin-left: 16%; }
+    .hero-middle p { font-size: var(--step-lead); line-height: 1.35; margin-bottom: 32px; }
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; }
+    .hero-figure { position: relative; margin: calc(-1 * var(--margin)) calc(-1 * var(--margin)) calc(-1 * var(--margin)) 0; overflow: hidden; background: var(--surface); }
+    .hero-figure img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; transform-origin: 50% 60%; animation: drift 24s ease-in-out infinite alternate; }
+    .hero-figure figcaption {
+      position: absolute; left: 0; bottom: 0; padding: 14px var(--margin);
+      font-size: var(--step-small); color: var(--ink); background: rgba(17, 17, 17, 0.72);
     }
-    .contact-item:hover { background: #111115; border-color: var(--primary); transform: translateY(-8px); }
-    .contact-icon-lg {
-      font-size: 2.2rem; color: var(--text-muted); transition: 0.4s;
-      background: rgba(255,255,255,0.05); width: 70px; height: 70px;
-      display: flex; align-items: center; justify-content: center; border-radius: 50%;
-    }
-    .contact-item:hover .contact-icon-lg { color: white; background: var(--primary); transform: scale(1.1); }
+    @keyframes drift { from { transform: scale(1.02); } to { transform: scale(1.1) translateX(-1.5%); } }
 
-    /* Footer */
-    .site-footer {
-      text-align: center; padding: 3rem 0; color: var(--text-muted); font-size: 0.9rem;
+    /* ---------- Arıza seçici ---------- */
+    .fix { padding-top: var(--gap); }
+    .fix h2, .about-lead, .contact h2 { font-size: var(--step-head); }
+    .fix-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 48px; }
+    .fix-head p { max-width: 36ch; }
+    .fix-grid { display: grid; grid-template-columns: 5fr 7fr; gap: var(--margin); align-items: start; }
+    .fault-list { display: flex; flex-direction: column; gap: 4px; }
+    .fault-list button {
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      min-height: 60px; padding: 0 20px;
+      background: var(--surface); border: 0; cursor: pointer; text-align: left;
+      font-size: var(--step-lead); font-weight: 600;
+      transition: background-color 0.2s, padding-left 0.3s var(--ease);
+    }
+    .fault-list button:hover { background: var(--raised); padding-left: 28px; }
+    .fault-list button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+    .fault-list button svg { width: 20px; height: 20px; flex: none; opacity: 0.6; }
+    .faults { position: sticky; top: var(--margin); }
+    .fault { background: var(--surface); padding: clamp(28px, 4vw, 56px); min-height: 100%; }
+    .fault + .fault { margin-top: 4px; }
+    .js .fault { display: none; }
+    .js .fault.is-active { display: block; animation: rise 0.45s var(--ease); }
+    .fault h3 { font-family: var(--display); text-transform: uppercase; font-size: clamp(2.25rem, 1.5rem + 2.6vw, 4rem); line-height: 0.9; margin-bottom: 28px; max-width: 14ch; }
+    .fault p { max-width: 52ch; margin-bottom: 16px; }
+    .fault dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 20px; margin: 28px 0 36px; font-size: var(--step-body); }
+    .fault dt { color: var(--muted); }
+    .fault dd { font-weight: 600; }
+    @keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+
+    /* ---------- Hakkımda ---------- */
+    .about { padding-top: var(--gap); }
+    .about-row { display: grid; grid-template-columns: 34% 1fr; column-gap: 0; }
+    .about-facts { display: flex; flex-direction: column; gap: 20px; padding-right: 24px; font-size: var(--step-small); }
+    .about-facts span { display: block; color: var(--muted); }
+    .about-facts strong { font-weight: 600; font-size: var(--step-body); }
+    .about-lead { margin-bottom: 32px; }
+    .about-text { max-width: 60ch; }
+    .about-text p { font-size: var(--step-lead); line-height: 1.4; }
+    .about-text p + p { margin-top: 20px; font-size: var(--step-body); line-height: 1.55; }
+    .about-record { margin-top: 96px; }
+    .about-record h3 { font-size: var(--step-body); font-weight: 600; }
+    .record-lists { display: grid; grid-template-columns: repeat(2, minmax(0, 360px)); gap: 48px 64px; }
+    .record-lists ul { list-style: none; }
+    .record-lists h4 { font-size: var(--step-small); color: var(--muted); font-weight: 400; margin-bottom: 12px; }
+    .record-lists li { display: flex; justify-content: space-between; gap: 16px; padding: 8px 0; font-size: var(--step-body); }
+    .record-lists li + li { padding-top: 8px; }
+    .record-lists li span:last-child { color: var(--muted); text-align: right; }
+
+    /* ---------- İşler: düzensiz duvar ---------- */
+    .work { margin-top: var(--gap); background: #e9e6e1; color: #151515; padding-block: clamp(48px, 6vw, 96px) clamp(32px, 3vw, 48px); }
+    .work-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 32px; }
+    .work-head h2 { font-size: clamp(5rem, 2rem + 13vw, 13rem); }
+    .work-head p { max-width: 30ch; padding-bottom: 12px; }
+    .wall { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tile { flex: 1 1 var(--w, 30%); display: flex; flex-direction: column; text-decoration: none; min-width: 0; }
+    .tile-img { height: var(--h, 300px); overflow: hidden; background: #d5d1cb; }
+    .tile img { width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform 0.7s var(--ease), opacity 0.3s; }
+    .tile:hover img { transform: scale(1.04); }
+    .wall:hover .tile:not(:hover) img { opacity: 0.6; }
+    .tile-cap { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0 18px; font-size: var(--step-small); }
+    .tile-cap strong { font-weight: 600; }
+    .tile-cap span { color: #555; text-align: right; }
+    .row-a { --h: 360px; }
+    .row-b { --h: 260px; }
+    .row-c { --h: 520px; }
+    .tile-faruk { flex: 1 1 100%; margin-top: 72px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .tile-faruk .tile { --h: 380px; }
+    .faruk-note { grid-column: 1 / -1; display: flex; justify-content: space-between; gap: 16px; align-items: baseline; padding: 4px 0 18px; font-size: var(--step-body); }
+    .faruk-note h3 { font-weight: 800; font-family: var(--display); text-transform: uppercase; font-size: clamp(1.75rem, 1rem + 2vw, 2.75rem); line-height: 1; }
+    .faruk-note span { color: #4a4a4a; max-width: 46ch; text-align: right; }
+
+    /* ---------- İletişim: adres satırları ---------- */
+    .contact { padding-top: clamp(96px, 9vw, 140px); }
+    .contact h2 { padding-inline: var(--margin); margin-bottom: 40px; }
+    .rows a, .rows div { display: flex; align-items: flex-end; min-height: clamp(84px, 10vw, 150px); padding: 0 var(--margin) clamp(14px, 1.6vw, 24px); text-decoration: none; font-size: clamp(2.75rem, 1rem + 6vw, 6.5rem); }
+    .rows > :nth-child(odd) { background: var(--surface); }
+    .rows a { transition: background-color 0.25s, color 0.25s; }
+    .rows a:hover { background: var(--ink); color: var(--bg); }
+    .rows .row-cta { background: var(--accent); color: var(--accent-ink); justify-content: space-between; align-items: center; padding-bottom: 0; }
+    .rows .row-cta:hover { background: #b39883; color: var(--accent-ink); }
+    .round { width: 0.9em; height: 0.9em; border-radius: 50%; background: var(--accent-ink); color: var(--accent); display: inline-flex; align-items: center; justify-content: center; transition: transform 0.3s var(--ease); flex: none; }
+    .round svg { width: 42%; height: 42%; }
+    .row-cta:hover .round { transform: translateX(8px) rotate(-12deg); }
+
+    /* ---------- Alt bilgi ---------- */
+    footer { background: var(--ink); color: var(--bg); min-height: 100svh; display: grid; grid-template-rows: auto 1fr auto; padding: 40px var(--margin) 20px; margin-top: var(--gap); }
+    .foot-cols { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; font-size: var(--step-body); }
+    .foot-cols ul { list-style: none; }
+    .foot-cols li { color: #555; }
+    .foot-cols li:first-child { color: var(--bg); font-weight: 600; margin-bottom: 4px; }
+    .foot-cols a { text-decoration: none; display: inline-block; padding: 3px 0; }
+    .foot-cols a:hover { text-decoration: underline; text-underline-offset: 0.25em; }
+    .foot-mark { align-self: end; }
+    .foot-mark svg { width: 100%; height: auto; display: block; }
+    .foot-mark text { font-family: var(--display); font-weight: 800; fill: var(--bg); }
+    .legal { font-size: var(--step-small); color: #555; margin-top: 20px; display: flex; justify-content: space-between; gap: 16px; }
+
+    /* ---------- Giriş hareketleri (betik yoksa içerik görünür kalır) ---------- */
+    .js [data-reveal] > *, .js .wall > a.tile > * { opacity: 0; }
+    .js [data-reveal].is-in > *, .js .wall > a.tile.is-in > * { animation: rise 0.7s var(--ease) both; }
+    .js [data-reveal].is-in > :nth-child(2), .js .wall > a.tile.is-in > :nth-child(2) { animation-delay: 0.08s; }
+    .js [data-reveal].is-in > :nth-child(3) { animation-delay: 0.16s; }
+    .js [data-reveal].is-in > :nth-child(4) { animation-delay: 0.24s; }
+    .js [data-reveal].is-in > :nth-child(5) { animation-delay: 0.32s; }
+    .js [data-reveal].is-in > :nth-child(n+6) { animation-delay: 0.4s; }
+    .name-first, .name-last { transition: transform 0.1s linear; will-change: transform; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; }
+      .js [data-reveal] > *, .js .wall > a.tile > * { opacity: 1; transform: none; }
     }
 
-    /* Responsive */
-    @media (max-width: 900px) {
-      .desktop-nav { display: none; }
-      .menu-toggle { display: block; }
-      .hero { padding-top: 130px; align-items: flex-start; text-align: center; }
-      .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .hero-actions { width: 100%; align-items: center; }
-      .hero-content h1 { font-size: 2.5rem; }
-      .btn-row { flex-wrap: nowrap; width: 100%; justify-content: center; }
-      .btn { flex: 1; padding: 0.8rem; font-size: 0.9rem; }
-      .about-container { grid-template-columns: 1fr !important; }
-      .contact-methods { flex-direction: column; width: 100%; }
-      .contact-item { width: 100%; flex-direction: row; justify-content: flex-start; padding: 1.5rem; }
-      .contact-icon-lg { margin-right: 1rem; width: 50px; height: 50px; font-size: 1.5rem; }
-      .section-header h2 { font-size: 2rem; }
-      .projects-grid, .services-grid { gap: 1rem; }
-      .project-card, .service-card { width: 100%; max-width: none; }
+    /* ---------- Tablet ---------- */
+    @media (max-width: 1024px) {
+      .fix-grid { grid-template-columns: 1fr; }
+      .faults { position: static; }
+      .about-row { grid-template-columns: 1fr; }
+      .about-row > .about-facts { order: 2; flex-direction: row; flex-wrap: wrap; gap: 20px 40px; margin-top: 48px; }
+      .foot-cols { grid-template-columns: repeat(2, 1fr); }
     }
 
-    /* Animations */
-    .fade-in-up {
-      opacity: 0; transform: translateY(30px);
-      animation: fadeInUp 0.8s ease forwards;
+    /* ---------- Telefon: kendi kompozisyonu ---------- */
+    @media (max-width: 720px) {
+      :root { --step-name: 25vw; --gap: 112px; }
+      .hero { grid-template-columns: 1fr; padding-bottom: 32px; }
+      .hero-text { display: contents; }
+      .hero-top { order: 1; }
+      .hero-figure { order: 2; height: 46svh; margin: 0 calc(-1 * var(--margin)); }
+      .hero-figure figcaption { display: none; }
+      .hero-middle { order: 4; margin-left: 0; padding-top: 24px; }
+      .name-last { order: 3; }
+      .hero nav { padding-top: 4px; }
+      .hero nav a:not(.keep) { display: none; }
+      .fix-head { flex-direction: column; align-items: flex-start; }
+      .fault-list button { min-height: 56px; font-size: 1.125rem; }
+      .work-head { flex-direction: column; align-items: flex-start; }
+      .work-head h2 { font-size: 30vw; }
+      .tile { flex-basis: var(--wm, 100%); }
+      .tile-img { height: var(--hm, 220px); }
+      .tile-faruk { grid-template-columns: 1fr; }
+      .tile-faruk .tile { --h: 240px; --hm: 240px; }
+      .faruk-note { flex-direction: column; }
+      .faruk-note span { text-align: left; }
+      .rows a, .rows div { font-size: 10.5vw; min-height: 84px; }
+      .record-lists { grid-template-columns: 1fr; }
+      .legal { flex-direction: column; }
     }
-    .delay-100 { animation-delay: 0.1s; }
-    .delay-200 { animation-delay: 0.2s; }
-    .delay-300 { animation-delay: 0.3s; }
-    @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
   </style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <a href="#home" class="brand"><i class="fa-solid fa-bolt"></i> Orkun Tarlacı</a>
-      
-      <button class="menu-toggle" id="mobile-menu-btn" aria-label="Menüyü aç">
-        <span></span><span></span><span></span>
-      </button>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.6 10.8a15.2 15.2 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z" fill="currentColor"/></symbol>
+  </svg>
 
-      <nav class="desktop-nav">
-        <a href="#home" class="nav-item">Ana Sayfa</a>
-        <a href="#services" class="nav-item">Hizmetler</a>
-        <a href="#about" class="nav-item">Hakkımda</a>
-        <a href="#projects" class="nav-item">Projelerim</a>
-        <a href="#contact" class="nav-item">İletişim</a>
-        <a href="tel:+905523875272" class="phone-link"><i class="fa-solid fa-phone"></i> 0552 387 5272</a>
-      </nav>
+  <header class="hero">
+    <div class="hero-text">
+      <div class="hero-top">
+        <h1 class="display name" aria-label="Orkun Tarlacı — bilgisayar tamiri ve web sitesi, Beşiktaş"><span class="name-first" aria-hidden="true">Orkun</span></h1>
+        <nav aria-label="Sayfa">
+          <a href="#ariza">Tamir</a>
+          <a href="#isler">İşler</a>
+          <a href="#hakkimda">Hakkımda</a>
+          <a href="#iletisim" class="keep">İletişim</a>
+        </nav>
+      </div>
+      <div class="hero-middle">
+        <p>Beşiktaş Abbasağa'da bilgisayar tamiri, format ve hızlandırma. Mahalle esnafına da web sitesi yapıyorum.</p>
+        <div class="hero-actions">
+          <a class="btn" href="tel:+905523875272"><svg aria-hidden="true"><use href="#i-phone"/></svg>0552 387 52 72</a>
+          <a class="link" href="https://wa.me/905523875272?text=Merhaba%20Orkun%2C%20bilgisayar%C4%B1m%20i%C3%A7in%20yaz%C4%B1yorum." target="_blank" rel="noopener">WhatsApp'tan yaz <svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+      <span class="display name name-last" aria-hidden="true">Tarlacı</span>
     </div>
+    <figure class="hero-figure">
+      <img src="img/projeler/obez.webp" width="1200" height="750" alt="Masada açık bir dizüstü bilgisayar, ekranında Obez Bilişim sitesi; yanında kahve ve defter">
+      <figcaption>Obez Bilişim için yaptığım açılış sahnesi</figcaption>
+    </figure>
   </header>
 
-  <nav class="mobile-menu" id="mobile-menu">
-    <a href="#home" class="nav-item"><i class="fa-solid fa-house"></i> Ana Sayfa</a>
-    <a href="#services" class="nav-item"><i class="fa-solid fa-screwdriver-wrench"></i> Hizmetler</a>
-    <a href="#about" class="nav-item"><i class="fa-solid fa-user"></i> Hakkımda</a>
-    <a href="#projects" class="nav-item"><i class="fa-solid fa-folder-open"></i> Projelerim</a>
-    <a href="#contact" class="nav-item"><i class="fa-solid fa-envelope"></i> İletişim</a>
-    <a href="tel:+905523875272" class="phone-link"><i class="fa-solid fa-phone"></i> 0552 387 5272</a>
-  </nav>
-
   <main>
-    <section id="home" class="hero">
-      <div class="container hero-grid">
-        <div class="hero-content fade-in-up">
-          <div class="status-badge"><span style="display:block; width:8px; height:8px; background:#22c55e; border-radius:50%; box-shadow:0 0 10px #22c55e"></span> Aktif Hizmet Veriliyor</div>
-          <h1>Beşiktaş'ın <br><span class="text-gradient">Teknoloji Çözüm</span> Noktası</h1>
-          <p>Bilgisayarınız yavaş mı? Laptop bakımı mı gerekiyor? Abbasağa ve çevresinde en hızlı, güvenilir ve uygun fiyatlı teknik servis hizmeti.</p>
-          <div class="hero-actions">
-            <div class="btn-row">
-              <a href="tel:+905523875272" class="btn btn-primary btn-pulse"><i class="fa-solid fa-phone"></i> Hemen Ara</a>
-              <a href="https://wa.me/905523875272?text=Merhaba%20Orkun,%20bilgisayar%20servisi%20i%C3%A7in%20yaz%C4%B1yorum." target="_blank" class="btn btn-outline"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
-            </div>
-            <a href="https://www.google.com/maps/search/?api=1&query=Abbasa%C4%9Fa+Mahallesi,+Be%C5%9Fikta%C5%9F/%C4%B0stanbul" target="_blank" class="btn btn-map"><i class="fa-solid fa-location-arrow"></i> Yol Tarifi Al (Abbasağa)</a>
-          </div>
+    <!-- Arıza seçici: hizmetler, ne yapıldığı ve hazır WhatsApp mesajıyla -->
+    <section id="ariza" class="fix wrap" aria-labelledby="ariza-baslik">
+      <div class="fix-head" data-reveal>
+        <h2 id="ariza-baslik" class="display">Bilgisayarın neyi var?</h2>
+        <p>Birini seçin; ne yaptığımı ve ne kadar sürdüğünü görün. Arıza tespiti ücretsiz.</p>
+      </div>
+      <div class="fix-grid">
+        <div class="fault-list" role="group" aria-label="Arıza türleri" hidden>
+          <button type="button" data-fault="yavas">Çok yavaş <svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          <button type="button" data-fault="acilmiyor">Hiç açılmıyor <svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          <button type="button" data-fault="ekran">Ekran, klavye, menteşe <svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          <button type="button" data-fault="isinma">Isınıyor, fan bağırıyor <svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          <button type="button" data-fault="virus">Virüs, reklam, garip pencereler <svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          <button type="button" data-fault="format">Format, Windows, program <svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          <button type="button" data-fault="veri">Dosyalarım silindi <svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          <button type="button" data-fault="site">Dükkânıma site lazım <svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
         </div>
-        <div class="hero-card-wrapper fade-in-up delay-200">
-          <div class="hero-card">
-            <div style="background: radial-gradient(circle at center, rgba(79,70,229,0.25), transparent 70%); position:absolute; inset:0; z-index:0; pointer-events:none;"></div>
-            <div style="position:relative; z-index:1;">
-              <i class="fa-solid fa-laptop-medical" style="font-size: 4.5rem; color: var(--primary); margin-bottom: 1.5rem; filter:drop-shadow(0 10px 20px rgba(79,70,229,0.4))"></i>
-              <h3 style="margin-bottom:0.5rem; font-size:1.5rem">Hızlı Servis</h3>
-              <p style="font-size:1rem; color:var(--text-muted)">Aynı gün arıza tespiti ve hızlı onarım garantisi.</p>
-              <div style="margin-top:2rem; padding-top:1.5rem; border-top:1px solid var(--border); display:flex; justify-content:space-around;">
-                <div style="text-align:center"><i class="fa-brands fa-windows" style="font-size:1.2rem; color:var(--accent)"></i><div style="font-size:0.8rem; margin-top:8px; font-weight:600">Format</div></div>
-                <div style="text-align:center"><i class="fa-solid fa-microchip" style="font-size:1.2rem; color:var(--secondary)"></i><div style="font-size:0.8rem; margin-top:8px; font-weight:600">Donanım</div></div>
-                <div style="text-align:center"><i class="fa-solid fa-shield-virus" style="font-size:1.2rem; color:#22c55e"></i><div style="font-size:0.8rem; margin-top:8px; font-weight:600">Güvenlik</div></div>
-              </div>
-            </div>
-          </div>
+        <div class="faults" aria-live="polite">
+          <article class="fault" id="f-yavas" data-label="bilgisayarım çok yavaş">
+            <h3>Çok yavaş</h3>
+            <p>Önce neyin yavaşlattığına bakarım: disk, RAM, açılışta kendiliğinden çalışan programlar. Çoğu zaman sorun eski bir hard disktir.</p>
+            <p>Gerekirse SSD'ye geçiş ya da RAM ekleme öneririm; dosyalarınızı ve programlarınızı yeni diske olduğu gibi taşırım.</p>
+            <dl><dt>Süre</dt><dd>Çoğu zaman aynı gün</dd><dt>Parça</dt><dd>Orijinal ya da birinci sınıf muadil, bütçenize göre</dd></dl>
+          </article>
+          <article class="fault" id="f-acilmiyor" data-label="bilgisayarım hiç açılmıyor">
+            <h3>Hiç açılmıyor</h3>
+            <p>Güç, anakart, RAM ve disk sırayla test edilir. Neyin bozuk olduğunu ve fiyatını söylemeden işe başlamam.</p>
+            <p>Anakart onarımı, şarj soketi ve güç devresi arızaları da burada yapılır.</p>
+            <dl><dt>Tespit</dt><dd>Aynı gün, ücretsiz</dd><dt>Parça gerekirse</dt><dd>Tedarik süresine bağlı</dd></dl>
+          </article>
+          <article class="fault" id="f-ekran" data-label="ekran / klavye / menteşe">
+            <h3>Ekran, klavye, menteşe</h3>
+            <p>Kırık ekran, basmayan tuşlar, kopan menteşe, gevşek şarj soketi. Modelinize uygun parçayı bulup değiştiririm.</p>
+            <dl><dt>Süre</dt><dd>Parça elimdeyse aynı gün</dd><dt>Parça</dt><dd>Orijinal ya da birinci sınıf muadil</dd></dl>
+          </article>
+          <article class="fault" id="f-isinma" data-label="bilgisayarım ısınıyor">
+            <h3>Isınıyor, fan bağırıyor</h3>
+            <p>Fan ve soğutucu temizliği, kuruyan termal macunun yenilenmesi. Isınan laptop hem yavaşlar hem de ömrü kısalır.</p>
+            <dl><dt>Süre</dt><dd>Aynı gün</dd></dl>
+          </article>
+          <article class="fault" id="f-virus" data-label="virüs / reklam sorunu">
+            <h3>Virüs, reklam, garip pencereler</h3>
+            <p>Zararlı yazılımları ve fidye yazılımlarını temizlerim, tarayıcıları sıfırlarım. Kurtarılamayacak kadar bozulmuşsa dosyalarınızı yedekleyip temiz kurulum yaparım.</p>
+            <dl><dt>Süre</dt><dd>Aynı gün</dd></dl>
+          </article>
+          <article class="fault" id="f-format" data-label="format / Windows kurulumu">
+            <h3>Format, Windows, program</h3>
+            <p>Windows kurulumu, sürücüler, Office ve kullandığınız programlar. Dosyalarınız önce yedeklenir, kurulumdan sonra geri konur.</p>
+            <dl><dt>Süre</dt><dd>Aynı gün</dd></dl>
+          </article>
+          <article class="fault" id="f-veri" data-label="silinen dosyalar">
+            <h3>Dosyalarım silindi</h3>
+            <p>Silinen ya da bozulan diskten veri kurtarma, eski bilgisayardan yenisine taşıma, bir daha kaybolmaması için yedek düzeni.</p>
+            <p>Disk tıkırdıyorsa kullanmayı bırakın; her açılış kurtarma şansını düşürür.</p>
+            <dl><dt>Süre</dt><dd>Diskin durumuna bağlı</dd></dl>
+          </article>
+          <article class="fault" id="f-site" data-label="dükkânım için web sitesi">
+            <h3>Dükkânıma site lazım</h3>
+            <p>Tek sayfalık tanıtım sitesinden online randevu ve sipariş sistemine kadar. Kuaför, çiçekçi, teknik servis, bilişim dükkânı için yaptıklarımı aşağıda görebilirsiniz.</p>
+            <p><a class="link" href="#isler">Yaptığım siteler <svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+          </article>
+          <a class="btn fault-cta" id="fault-cta" href="https://wa.me/905523875272" target="_blank" rel="noopener" hidden>WhatsApp'tan bunu yaz <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
         </div>
       </div>
     </section>
 
-    <!-- ============ HİZMETLER ============ -->
-    <section id="services" class="section-padding">
-      <div class="container">
-        <div class="section-header fade-in-up">
-          <h2>Hizmetlerimiz</h2>
-          <p style="color:var(--text-muted); font-size:1.1rem">Bireysel ve kurumsal ihtiyaçlarınız için uçtan uca, garantili çözümler.</p>
+    <!-- Hakkımda -->
+    <section id="hakkimda" class="about wrap" aria-labelledby="hakkimda-baslik">
+      <div class="about-row" data-reveal>
+        <div class="about-facts">
+          <div><span>Yer</span><strong>Abbasağa, Beşiktaş</strong></div>
+          <div><span>Okul</span><strong>Topkapı Üniversitesi, Bilgisayar Teknolojisi</strong></div>
+          <div><span>İlk bilgisayarı açtığımda</span><strong>14 yaşındaydım</strong></div>
         </div>
-        <div class="services-grid">
-
-          <a href="tel:+905523875272" class="service-card fade-in-up delay-100">
-            <div class="service-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
-            <h3>Tamir & Bakım</h3>
-            <p>Anakart tamiri, ekran değişimi, termal macun yenileme ve fan temizliği.</p>
-            <div class="service-cta">Hizmet Al <i class="fa-solid fa-arrow-right"></i></div>
-          </a>
-
-          <a href="tel:+905523875272" class="service-card fade-in-up delay-200">
-            <div class="service-icon"><i class="fa-brands fa-windows"></i></div>
-            <h3>Windows Optimizasyon</h3>
-            <p>Format, driver kurulumları ve sistem hızlandırma işlemleri.</p>
-            <div class="service-cta">Hizmet Al <i class="fa-solid fa-arrow-right"></i></div>
-          </a>
-
-          <a href="tel:+905523875272" class="service-card fade-in-up delay-300">
-            <div class="service-icon"><i class="fa-solid fa-code"></i></div>
-            <h3>Web Tasarım & Kurulum</h3>
-            <p>Kişisel blog, kurumsal firma sitesi veya e-ticaret. Sıfırdan anahtar teslim web sitesi.</p>
-            <div class="service-cta">Hizmet Al <i class="fa-solid fa-arrow-right"></i></div>
-          </a>
-
-          <a href="tel:+905523875272" class="service-card fade-in-up delay-100">
-            <div class="service-icon"><i class="fa-solid fa-hard-drive"></i></div>
-            <h3>Veri Kurtarma & Yedek</h3>
-            <p>Silinen dosyaları kurtarma, SSD'ye geçiş ve yedekleme.</p>
-            <div class="service-cta">Hizmet Al <i class="fa-solid fa-arrow-right"></i></div>
-          </a>
-
-          <a href="tel:+905523875272" class="service-card fade-in-up delay-200">
-            <div class="service-icon"><i class="fa-solid fa-virus-slash"></i></div>
-            <h3>Virüs Temizleme</h3>
-            <p>Fidye yazılımları ve truva atlarına karşı garantili temizlik.</p>
-            <div class="service-cta">Hizmet Al <i class="fa-solid fa-arrow-right"></i></div>
-          </a>
-
-          <a href="tel:+905523875272" class="service-card fade-in-up delay-300">
-            <div class="service-icon"><i class="fa-solid fa-gauge-high"></i></div>
-            <h3>Ultra Performans Optimizasyonu</h3>
-            <p>Yavaş bilgisayarlarınızı hızlandırıyoruz. RAM yükseltme, SSD takviyesi ve maksimum performans.</p>
-            <div class="service-cta">Hizmet Al <i class="fa-solid fa-arrow-right"></i></div>
-          </a>
-
-          <a href="tel:+905523875272" class="service-card fade-in-up delay-100">
-            <div class="service-icon"><i class="fa-solid fa-tags"></i></div>
-            <h3>Yedek Parça Temini</h3>
-            <p>Bütçenize uygun orijinal veya 1. sınıf muadil parçaları en iyi fiyat garantisiyle buluyoruz.</p>
-            <div class="service-cta">Hizmet Al <i class="fa-solid fa-arrow-right"></i></div>
-          </a>
-
+        <div class="about-text">
+          <h2 id="hakkimda-baslik" class="display about-lead">Tek kişilik tezgâh</h2>
+          <p>Bilgisayarınızı alan da, açan da, size fiyatı söyleyen de benim. Arada kimse yok.</p>
+          <p>Acıbadem Hastanesi ve Simas Yatırım'da IT stajyeri olarak kurumların bilgisayarlarına baktım. Son iki yıldır Abbasağa'da kendi işimi yapıyorum: mahalleden gelen laptoplar, ofislerin bilgisayarları, okulların akıllı tahtaları ve esnafın web siteleri.</p>
+        </div>
+      </div>
+      <div class="about-row about-record" data-reveal>
+        <h3>Kayıt</h3>
+        <div class="record-lists">
+          <ul>
+            <li><h4>Staj</h4></li>
+            <li><span>Acıbadem Hastanesi</span><span>IT stajyeri</span></li>
+            <li><span>Simas Yatırım</span><span>IT stajyeri</span></li>
+          </ul>
+          <ul>
+            <li><h4>Web siteleri</h4></li>
+            <li><span>Faruk Demirezen</span><span>Kuaför, randevu</span></li>
+            <li><span>Ebru Çiçek</span><span>Çiçekçi, sipariş</span></li>
+            <li><span>Obez Bilişim</span><span>Bilişim</span></li>
+            <li><span>Havakare</span><span>Drone çekimi</span></li>
+            <li><span>Usta Dokunuş</span><span>Teknik servis</span></li>
+            <li><span>Usta Eller</span><span>Teknik servis</span></li>
+            <li><span>Akıllı Tahtalar</span><span>Okullar</span></li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <section id="about" class="section-padding" style="position:relative; overflow:hidden">
-      <div style="position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(90deg, transparent, var(--border), transparent);"></div>
-      <div class="container about-container">
-        <div class="fade-in-up">
-          <h2 style="font-size:2.8rem; margin-bottom:1.5rem">Hakkımda</h2>
-          <div style="font-size:1.1rem; color:var(--text-muted); line-height:1.8">
-            <p style="margin-bottom:1rem">Merhaba, ben <strong style="color:var(--text)">Orkun Tarlacı</strong>. Topkapı Üniversitesi Bilgisayar Teknolojisi bölümü öğrencisiyim ve 14 yaşımdan beri teknoloji dünyasının içindeyim.</p>
-            <p>Acıbadem Hastanesi ve Simas Yatırım gibi kurumsal firmalarda IT stajyerliği yaparak profesyonel deneyim kazandım. Son 2 yıldır Beşiktaş Abbasağa'da kendi işimi yaparak, mahalle esnafı samimiyetiyle kurumsal kaliteyi birleştiriyorum.</p>
-          </div>
+    <!-- İşler -->
+    <section id="isler" class="work wrap" aria-labelledby="isler-baslik">
+      <div class="work-head" data-reveal>
+        <h2 id="isler-baslik" class="display">İşler</h2>
+        <p>Beşiktaş ve çevresindeki dükkânlar için yaptığım siteler. Hepsi canlı, tıklayıp gezebilirsiniz.</p>
+      </div>
+      <div class="wall">
+        <a class="tile row-a" style="--w:44%" href="Siteler/akillitahtalar/index.html" target="_blank" rel="noopener">
+          <div class="tile-img"><img src="img/projeler/akillitahtalar.webp" width="1200" height="750" loading="lazy" alt="Akıllı Tahtalar sitesinin giriş ekranı"></div>
+          <div class="tile-cap"><strong>Akıllı Tahtalar</strong><span>Okullar için imaj ve kurulum</span></div>
+        </a>
+        <a class="tile row-a" style="--w:54%" href="https://havakare.com/" target="_blank" rel="noopener">
+          <div class="tile-img"><img src="img/projeler/havakare.webp" width="1200" height="750" loading="lazy" alt="Havakare drone çekimi sitesinin giriş ekranı"></div>
+          <div class="tile-cap"><strong>Havakare</strong><span>Drone ve hava çekimi</span></div>
+        </a>
+        <a class="tile row-b" style="--w:30%" href="https://xn--ustadokunuteknikservis-3ge.com/" target="_blank" rel="noopener">
+          <div class="tile-img"><img src="img/projeler/ustadokunus.webp" width="1200" height="750" loading="lazy" alt="Usta Dokunuş Teknik Servis sitesinin giriş ekranı"></div>
+          <div class="tile-cap"><strong>Usta Dokunuş Teknik Servis</strong><span>Esenyurt</span></div>
+        </a>
+        <a class="tile row-b" style="--w:30%" href="https://ustaellerteknikservis.com/" target="_blank" rel="noopener">
+          <div class="tile-img"><img src="img/projeler/ustaeller.webp" width="1200" height="750" loading="lazy" alt="Usta Eller Teknik Servis sitesinin giriş ekranı"></div>
+          <div class="tile-cap"><strong>Usta Eller Teknik Servis</strong><span>Beyaz eşya</span></div>
+        </a>
+        <a class="tile row-b" style="--w:36%" href="https://obezbilisim.com/" target="_blank" rel="noopener">
+          <div class="tile-img"><img src="img/projeler/obez.webp" width="1200" height="750" loading="lazy" alt="Obez Bilişim sitesinin üç boyutlu açılış sahnesi"></div>
+          <div class="tile-cap"><strong>Obez Bilişim</strong><span>Beşiktaş</span></div>
+        </a>
+
+        <div class="tile-faruk" data-reveal>
+          <div class="faruk-note"><h3>Faruk Demirezen</h3><span>Erkek kuaförü için online randevu sitesi ve randevuları yönettiği panel. Panel burada örnek verilerle, şifresiz açılır; işlem yapılmaz.</span></div>
+          <a class="tile" href="Siteler/Faruk-Demirezen/index.html" target="_blank" rel="noopener">
+            <div class="tile-img"><img src="img/projeler/faruk-site.webp" width="1200" height="750" loading="lazy" alt="Faruk Demirezen kuaför sitesinin giriş ekranı"></div>
+            <div class="tile-cap"><strong>Site</strong><span>Hizmet, gün ve saat seçerek randevu</span></div>
+          </a>
+          <a class="tile" href="Siteler/Faruk-Demirezen/index.html#/admin" target="_blank" rel="noopener">
+            <div class="tile-img"><img src="img/projeler/faruk-panel.webp" width="1200" height="750" loading="lazy" alt="Faruk Demirezen yönetim panelinin genel bakış ekranı"></div>
+            <div class="tile-cap"><strong>Yönetim paneli</strong><span>Demo, örnek veri</span></div>
+          </a>
         </div>
-        <div class="stats fade-in-up delay-200">
-          <div class="stat-box"><span class="stat-number" style="color:var(--primary)">5+</span><span style="color:var(--text-muted); font-weight:500">Yıl Deneyim</span></div>
-          <div class="stat-box"><span class="stat-number" style="color:var(--secondary)">100%</span><span style="color:var(--text-muted); font-weight:500">Memnuniyet</span></div>
-        </div>
+
+        <a class="tile row-c" style="--w:100%" href="Siteler/Ebru-Cicek/index.html" target="_blank" rel="noopener">
+          <div class="tile-img"><img src="img/projeler/ebru.webp" width="1200" height="750" loading="lazy" alt="Ebru Çiçek çiçekçi sitesinin giriş ekranı"></div>
+          <div class="tile-cap"><strong>Ebru Çiçek</strong><span>Çiçekçi, WhatsApp siparişli, kendi buketini tasarla</span></div>
+        </a>
       </div>
     </section>
 
-    <!-- ============ PROJELER ============ -->
-    <section id="projects" class="section-padding">
-      <div class="container">
-        <div class="section-header fade-in-up">
-          <h2>Web Sitesi Projelerim</h2>
-          <p style="color:var(--text-muted); font-size:1.1rem">Geliştirdiğim bazı web tasarım ve arayüz çalışmaları.</p>
-        </div>
-        <div class="projects-grid">
-
-          <a href="Siteler/akillitahtalar/index.html" target="_blank" class="project-card fade-in-up delay-100">
-            <div class="project-icon"><i class="fa-solid fa-chalkboard"></i></div>
-            <h3>Akıllı Tahtalar</h3>
-            <p>Okul ve eğitim kurumları için geliştirdiğim bilgilendirme arayüzü.</p>
-            <div class="project-cta">Projeyi İncele <i class="fa-solid fa-arrow-right"></i></div>
-          </a>
-
-          <a href="https://havakare.com/" target="_blank" class="project-card fade-in-up delay-200">
-            <div class="project-icon">
-              <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:1em; height:1em; stroke:currentColor; fill:none;">
-                <rect x="9" y="9.5" width="6" height="5" rx="1.5"/>
-                <circle cx="12" cy="12" r="1.1" fill="currentColor" stroke="none"/>
-                <line x1="9.5" y1="10" x2="6.5" y2="7"/>
-                <line x1="14.5" y1="10" x2="17.5" y2="7"/>
-                <line x1="9.5" y1="14" x2="6.5" y2="17"/>
-                <line x1="14.5" y1="14" x2="17.5" y2="17"/>
-                <circle cx="5" cy="5.5" r="2.3"/>
-                <circle cx="19" cy="5.5" r="2.3"/>
-                <circle cx="5" cy="18.5" r="2.3"/>
-                <circle cx="19" cy="18.5" r="2.3"/>
-              </svg>
-            </div>
-            <h3>Havakare</h3>
-            <p>Drone ve hava çekimi hizmetleri için modern, mobil uyumlu tanıtım sitesi.</p>
-            <div class="project-cta">Projeyi İncele <i class="fa-solid fa-arrow-right"></i></div>
-          </a>
-
-          <a href="Siteler/usta dokunuşu teknik servis/index.html" target="_blank" class="project-card fade-in-up delay-300">
-            <div class="project-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
-            <h3>Usta Dokunuş Teknik Servis</h3>
-            <p>Esenyurt beyaz eşya, kombi ve klima servisi tanıtım sitesi.</p>
-            <div class="project-cta">Projeyi İncele <i class="fa-solid fa-arrow-right"></i></div>
-          </a>
-
-          <a href="https://ustaellerteknikservis.com/" target="_blank" class="project-card fade-in-up delay-100">
-            <div class="project-icon"><i class="fa-solid fa-toolbox"></i></div>
-            <h3>Usta Eller Teknik Servis</h3>
-            <p>Beyaz eşya ve teknik servis hizmetleri için kurumsal tanıtım sitesi.</p>
-            <div class="project-cta">Projeyi İncele <i class="fa-solid fa-arrow-right"></i></div>
-          </a>
-
-          <a href="Siteler/SA Yapı İnşaat Site/index.html" target="_blank" class="project-card fade-in-up delay-200">
-            <div class="project-icon"><i class="fa-solid fa-helmet-safety"></i></div>
-            <h3>SA Yapı İnşaat</h3>
-            <p>İnşaat firması için kurumsal kimliği yansıtan profesyonel web sitesi tasarımı.</p>
-            <div class="project-cta">Projeyi İncele <i class="fa-solid fa-arrow-right"></i></div>
-          </a>
-
-          <a href="Siteler/Obez-Bili-im-main/index.html" target="_blank" class="project-card fade-in-up delay-300">
-            <div class="project-icon"><i class="fa-solid fa-laptop-code"></i></div>
-            <h3>Obez Bilişim</h3>
-            <p>Beşiktaş'ın teknolojik çözüm noktası – bilgisayar, yazılım ve IT desteği.</p>
-            <div class="project-cta">Projeyi İncele <i class="fa-solid fa-arrow-right"></i></div>
-          </a>
-
-          <a href="Siteler/Ebru-Cicek/index.html" target="_blank" class="project-card fade-in-up delay-100">
-            <div class="project-icon"><i class="fa-solid fa-seedling"></i></div>
-            <h3>Ebru Çiçek</h3>
-            <p>İstanbul butik çiçek atölyesi için pastel tonlu, WhatsApp siparişli ve kendi buketini tasarlama özellikli web sitesi.</p>
-            <div class="project-cta">Projeyi İncele <i class="fa-solid fa-arrow-right"></i></div>
-          </a>
-
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="section-padding">
-      <div class="container fade-in-up">
-        <div class="contact-wrapper">
-          <h2>İletişime Geçin</h2>
-          <p style="color:var(--text-muted); max-width:500px; margin:1rem auto 3rem auto; font-size:1.1rem">Ücretsiz arıza tespiti ve danışmanlık için arayabilirsiniz.</p>
-          <div class="contact-methods">
-            <a href="tel:+905523875272" class="contact-item">
-              <div class="contact-icon-lg"><i class="fa-solid fa-phone-volume"></i></div>
-              <div style="text-align:left"><span style="font-weight:700; font-size:1.1rem; display:block">Ara</span><span style="font-size:0.9rem; color:var(--text-muted)">0552 387 5272</span></div>
-            </a>
-            <a href="https://wa.me/905523875272?text=Merhaba%20Orkun,%20bilgisayar%20servisi%20i%C3%A7in%20yaz%C4%B1yorum." target="_blank" class="contact-item">
-              <div class="contact-icon-lg"><i class="fa-brands fa-whatsapp"></i></div>
-              <div style="text-align:left"><span style="font-weight:700; font-size:1.1rem; display:block">WhatsApp</span><span style="font-size:0.9rem; color:var(--text-muted)">Mesaj Gönder</span></div>
-            </a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Abbasa%C4%9Fa+Mahallesi,+Be%C5%9Fikta%C5%9F/%C4%B0stanbul" target="_blank" class="contact-item">
-              <div class="contact-icon-lg"><i class="fa-solid fa-location-dot"></i></div>
-              <div style="text-align:left"><span style="font-weight:700; font-size:1.1rem; display:block">Konum</span><span style="font-size:0.9rem; color:var(--text-muted)">Beşiktaş / Abbasağa</span></div>
-            </a>
-          </div>
-        </div>
+    <!-- İletişim -->
+    <section id="iletisim" class="contact" aria-labelledby="iletisim-baslik">
+      <h2 id="iletisim-baslik" class="display" data-reveal><span>Gelin ya da arayın</span></h2>
+      <div class="rows display" data-reveal>
+        <a href="https://www.google.com/maps/search/?api=1&query=Abbasa%C4%9Fa+Mahallesi,+Be%C5%9Fikta%C5%9F/%C4%B0stanbul" target="_blank" rel="noopener">Abbasağa Mahallesi</a>
+        <div>Beşiktaş, İstanbul</div>
+        <a href="tel:+905523875272">0552 387 52 72</a>
+        <a class="row-cta" href="https://wa.me/905523875272?text=Merhaba%20Orkun%2C%20yaz%C4%B1yorum." target="_blank" rel="noopener">WhatsApp <span class="round"><svg aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <div style="margin-bottom:1.5rem"><a href="#home" style="font-weight:800; font-size:1.5rem; color:var(--text)"><i class="fa-solid fa-bolt" style="color:var(--primary)"></i> Orkun Tarlacı</a></div>
-      <p style="margin-bottom:1rem">Beşiktaş Abbasağa Mahallesi, İstanbul</p>
-      <div style="opacity:0.6">© 2026 Tüm Hakları Saklıdır.</div>
+  <footer>
+    <div class="foot-cols">
+      <ul><li>Adres</li><li>Abbasağa Mahallesi</li><li>Beşiktaş, İstanbul</li></ul>
+      <ul><li>Sayfa</li><li><a href="#ariza">Tamir</a></li><li><a href="#isler">İşler</a></li><li><a href="#hakkimda">Hakkımda</a></li></ul>
+      <ul><li>İletişim</li><li><a href="tel:+905523875272">0552 387 52 72</a></li><li><a href="https://wa.me/905523875272" target="_blank" rel="noopener">WhatsApp</a></li></ul>
+      <ul><li>Arıza tespiti</li><li>Ücretsiz</li></ul>
+    </div>
+    <div></div>
+    <div class="foot-mark">
+      <svg viewBox="0 0 1000 152" role="img" aria-label="Orkun Tarlacı"><text x="-4" y="146" font-size="196" textLength="1006" lengthAdjust="spacingAndGlyphs">ORKUN TARLACI</text></svg>
+      <div class="legal"><span>© 2026 Orkun Tarlacı</span><span>Bu sayfayı da ben yaptım.</span></div>
     </div>
   </footer>
 
   <script>
-    const menuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const header = document.querySelector('header');
-    const body = document.body;
+    document.documentElement.classList.add('js');
 
-    function openMenu() {
-      mobileMenu.classList.add('active');
-      menuBtn.classList.add('active');
-      header.classList.add('menu-open');
-      menuBtn.setAttribute('aria-label', 'Menüyü kapat');
-      body.style.overflow = 'hidden';
+    // Arıza seçici
+    const list = document.querySelector('.fault-list');
+    const faults = document.querySelectorAll('.fault');
+    const cta = document.getElementById('fault-cta');
+    list.hidden = false;
+    cta.hidden = false;
+    function pick(key) {
+      list.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.fault === key)));
+      faults.forEach(f => f.classList.toggle('is-active', f.id === 'f-' + key));
+      const active = document.getElementById('f-' + key);
+      const msg = 'Merhaba Orkun, ' + active.dataset.label + ' için yazıyorum.';
+      cta.href = 'https://wa.me/905523875272?text=' + encodeURIComponent(msg);
+      active.appendChild(cta);
     }
+    list.addEventListener('click', e => {
+      const b = e.target.closest('button');
+      if (b) pick(b.dataset.fault);
+    });
+    pick('yavas');
 
-    function closeMenu() {
-      mobileMenu.classList.remove('active');
-      menuBtn.classList.remove('active');
-      header.classList.remove('menu-open');
-      menuBtn.setAttribute('aria-label', 'Menüyü aç');
-      body.style.overflow = 'auto';
+    // Bölüm girişleri
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); } });
+    }, { rootMargin: '0px 0px -10% 0px' });
+    document.querySelectorAll('[data-reveal], .wall > a.tile').forEach(el => io.observe(el));
+
+    // İsmin iki yarısı kaydırınca birbirinden uzaklaşır
+    const first = document.querySelector('.name-first');
+    const last = document.querySelector('.name-last');
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      let ticking = false;
+      addEventListener('scroll', () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          const y = Math.min(scrollY, innerHeight);
+          first.style.transform = 'translateX(' + (-y * 0.15) + 'px)';
+          last.style.transform = 'translateX(' + (y * 0.15) + 'px)';
+          ticking = false;
+        });
+      }, { passive: true });
     }
-
-    menuBtn.addEventListener('click', () => {
-      if (mobileMenu.classList.contains('active')) {
-        closeMenu();
-      } else {
-        openMenu();
-      }
-    });
-
-    document.querySelectorAll('#mobile-menu a').forEach(link => {
-      link.addEventListener('click', closeMenu);
-    });
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.animationPlayState = 'running';
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        }
-      });
-    });
-    document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
