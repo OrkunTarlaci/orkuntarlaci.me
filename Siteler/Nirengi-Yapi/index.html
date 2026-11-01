@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nirengi Yapı – İnşaat ve Kentsel Dönüşüm</title>
+  <meta name="description" content="Nirengi Yapı: kentsel dönüşüm, kat karşılığı, taahhüt ve restorasyon. Deprem yönetmeliğine uygun, zamanında teslim edilen konut projeleri.">
+  <meta name="theme-color" content="#0f1f33">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2212%22 fill=%22%230f1f33%22/><path d=%22M32 12 52 50H12z%22 fill=%22none%22 stroke=%22%23f2a900%22 stroke-width=%226%22 stroke-linejoin=%22round%22/><circle cx=%2232%22 cy=%2238%22 r=%225%22 fill=%22%23f2a900%22/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --ink: #0f1f33;
+      --ink-2: #1b3150;
+      --amber: #f2a900;
+      --amber-2: #ffbd2e;
+      --paper: #f5f2ec;
+      --card: #ffffff;
+      --text: #1d2733;
+      --muted: #5b6573;
+      --line: #e3ddd2;
+      --nav: 76px;
+      --display: 'Archivo', 'Inter', sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav) + 12px); }
+    body { font-family: 'Inter', sans-serif; background: var(--paper); color: var(--text); line-height: 1.65; overflow-x: hidden; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea, select { font: inherit; color: inherit; }
+    :focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; }
+    .container { width: min(1180px, 100% - 40px); margin-inline: auto; }
+    .section { padding-block: 110px; }
+    h1, h2, h3 { font-family: var(--display); color: var(--ink); line-height: 1.1; letter-spacing: -0.02em; }
+    .h2 { font-size: clamp(2.1rem, 4vw, 3.2rem); font-weight: 800; margin-bottom: 0.8rem; }
+    .lead { color: var(--muted); font-size: 1.1rem; max-width: 58ch; }
+    .head-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem; margin-bottom: 3rem; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+      min-height: 52px; padding: 0 1.6rem; border-radius: 6px; border: 2px solid transparent;
+      font-weight: 600; cursor: pointer; transition: transform 0.2s, background-color 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:active { transform: scale(0.98); }
+    .btn-amber { background: var(--amber); color: var(--ink); }
+    .btn-amber:hover { background: var(--amber-2); }
+    .btn-line { border-color: rgba(255, 255, 255, 0.5); color: #fff; }
+    .btn-line:hover { border-color: #fff; background: rgba(255, 255, 255, 0.1); }
+    .btn-ink { background: var(--ink); color: #fff; }
+    .btn-ink:hover { background: var(--ink-2); }
+
+    /* ---------- Üst menü ---------- */
+    header { position: fixed; inset: 0 0 auto 0; height: var(--nav); z-index: 50; transition: background-color 0.3s, box-shadow 0.3s; }
+    header.solid { background: rgba(15, 31, 51, 0.97); box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18); }
+    header .container { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .logo { flex: none; display: flex; align-items: center; gap: 0.7rem; color: #fff; font-family: var(--display); font-weight: 800; font-size: 1.35rem; letter-spacing: -0.01em; }
+    .logo svg { width: 36px; height: 36px; }
+    .logo small { display: block; font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.72rem; letter-spacing: 0.04em; color: rgba(255, 255, 255, 0.7); margin-top: 1px; }
+    nav.links { display: flex; align-items: center; gap: 2rem; }
+    nav.links a { color: rgba(255, 255, 255, 0.85); font-weight: 500; font-size: 0.95rem; position: relative; padding: 4px 0; transition: color 0.2s; }
+    nav.links a:not(.btn)::after { content: ''; position: absolute; left: 0; bottom: -2px; width: 100%; height: 2px; background: var(--amber); transform: scaleX(0); transform-origin: left; transition: transform 0.25s; }
+    nav.links a:not(.btn):hover { color: #fff; }
+    nav.links a:not(.btn):hover::after, nav.links a.active::after { transform: scaleX(1); }
+    nav.links .btn { min-height: 44px; padding: 0 1.1rem; font-size: 0.9rem; color: var(--ink); }
+    .burger { display: none; flex: none; width: 44px; height: 44px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.3); background: transparent; color: #fff; font-size: 1.1rem; cursor: pointer; }
+
+    /* ---------- Giriş ---------- */
+    .hero { position: relative; min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-end; color: #fff; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; }
+    .hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; animation: slow 24s ease-out forwards; }
+    .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(15, 31, 51, 0.9) 0%, rgba(15, 31, 51, 0.55) 50%, rgba(15, 31, 51, 0.1) 100%), linear-gradient(0deg, rgba(15, 31, 51, 0.85) 0%, transparent 40%); }
+    @keyframes slow { from { transform: scale(1.1); } to { transform: scale(1); } }
+    .hero-inner { position: relative; padding-top: calc(var(--nav) + 60px); padding-bottom: 60px; max-width: 760px; }
+    .hero-tag { display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 600; font-size: 0.9rem; color: var(--amber); margin-bottom: 1.2rem; }
+    .hero h1 { color: #fff; font-size: clamp(2.8rem, 6.4vw, 5.4rem); font-weight: 800; margin-bottom: 1.3rem; }
+    .hero h1 span { color: var(--amber); }
+    .hero p { font-size: 1.15rem; color: rgba(255, 255, 255, 0.88); max-width: 50ch; margin-bottom: 2rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+    .hero-stats { position: relative; background: var(--ink); border-top: 4px solid var(--amber); }
+    .hero-stats .container { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .hs { padding: 1.6rem 1.2rem; display: flex; align-items: center; gap: 1rem; }
+    .hs + .hs { border-left: 1px solid rgba(255, 255, 255, 0.1); }
+    .hs i { font-size: 1.5rem; color: var(--amber); }
+    .hs b { display: block; font-family: var(--display); font-size: 2.1rem; font-weight: 800; line-height: 1; color: #fff; }
+    .hs span { font-size: 0.88rem; color: rgba(255, 255, 255, 0.75); }
+
+    /* ---------- Hakkımızda ---------- */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .about-photo { position: relative; }
+    .about-photo img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 8px; }
+    .about-photo .badge { position: absolute; right: -24px; bottom: 32px; background: var(--amber); color: var(--ink); padding: 1.3rem 1.5rem; border-radius: 8px; box-shadow: 0 18px 40px -16px rgba(15, 31, 51, 0.5); }
+    .about-photo .badge b { display: block; font-family: var(--display); font-size: 2.4rem; font-weight: 800; line-height: 1; }
+    .about-photo .badge span { font-weight: 600; font-size: 0.9rem; }
+    .about-text p + p { margin-top: 1rem; }
+    .checks { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem 1.5rem; margin-top: 1.8rem; }
+    .checks li { display: flex; align-items: center; gap: 0.7rem; font-weight: 600; color: var(--ink); }
+    .checks i { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; background: rgba(242, 169, 0, 0.16); color: #b37d00; font-size: 0.9rem; flex: none; }
+
+    /* ---------- Hizmetler ---------- */
+    .services { background: var(--ink); color: #fff; }
+    .services h2, .services h3 { color: #fff; }
+    .services .lead { color: rgba(255, 255, 255, 0.7); }
+    .service-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255, 255, 255, 0.1); border-radius: 10px; overflow: hidden; }
+    .service { background: var(--ink); padding: 2.2rem 1.8rem; transition: background-color 0.3s; position: relative; }
+    .service:hover { background: var(--ink-2); }
+    .service .ico { width: 56px; height: 56px; border-radius: 10px; display: grid; place-items: center; background: rgba(242, 169, 0, 0.14); color: var(--amber); font-size: 1.4rem; margin-bottom: 1.4rem; transition: background-color 0.3s, color 0.3s, transform 0.3s; }
+    .service:hover .ico { background: var(--amber); color: var(--ink); transform: rotate(-6deg); }
+    .service h3 { font-size: 1.2rem; margin-bottom: 0.6rem; }
+    .service p { color: rgba(255, 255, 255, 0.72); font-size: 0.95rem; }
+
+    /* ---------- Projeler ---------- */
+    .filters { display: flex; gap: 6px; flex-wrap: wrap; }
+    .filters button { padding: 0.6rem 1.1rem; border-radius: 999px; border: 1px solid var(--line); background: var(--card); font-weight: 600; font-size: 0.92rem; cursor: pointer; transition: background-color 0.2s, color 0.2s, border-color 0.2s; }
+    .filters button:hover { border-color: var(--ink); }
+    .filters button[aria-pressed="true"] { background: var(--ink); color: #fff; border-color: var(--ink); }
+    .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
+    .project { background: var(--card); border-radius: 10px; overflow: hidden; border: 1px solid var(--line); transition: transform 0.3s, box-shadow 0.3s; }
+    .project:hover { transform: translateY(-6px); box-shadow: 0 24px 48px -28px rgba(15, 31, 51, 0.45); }
+    .project.hide { display: none; }
+    .project-img { position: relative; aspect-ratio: 4 / 3; overflow: hidden; }
+    .project-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
+    .project:hover .project-img img { transform: scale(1.06); }
+    .status { position: absolute; top: 14px; left: 14px; padding: 0.3rem 0.75rem; border-radius: 999px; font-size: 0.8rem; font-weight: 700; background: #fff; color: var(--ink); display: inline-flex; align-items: center; gap: 0.4rem; }
+    .status i { font-size: 0.55rem; }
+    .status.biten i { color: #16a34a; }
+    .status.devam i { color: var(--amber); }
+    .status.gelecek i { color: #2563eb; }
+    .project-body { padding: 1.3rem 1.4rem 1.5rem; }
+    .project-body h3 { font-size: 1.25rem; margin-bottom: 0.2rem; }
+    .project-body .loc { color: var(--muted); font-size: 0.92rem; display: flex; align-items: center; gap: 0.4rem; }
+    .project-body .loc i { color: var(--amber); }
+    .specs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-top: 1.1rem; padding-top: 1.1rem; border-top: 1px solid var(--line); }
+    .specs div { font-size: 0.8rem; color: var(--muted); }
+    .specs b { display: block; font-size: 1.02rem; color: var(--ink); font-family: var(--display); }
+    .progress { margin-top: 1rem; }
+    .progress-top { display: flex; justify-content: space-between; font-size: 0.82rem; font-weight: 600; color: var(--muted); margin-bottom: 0.35rem; }
+    .bar { height: 8px; border-radius: 999px; background: var(--line); overflow: hidden; }
+    .bar span { display: block; height: 100%; width: 0; background: var(--amber); border-radius: inherit; transition: width 1.2s cubic-bezier(0.2, 0.8, 0.2, 1); }
+
+    /* ---------- Süreç ---------- */
+    .process { background: #ebe6dc; }
+    .steps { list-style: none; display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; counter-reset: s; position: relative; }
+    .steps::before { content: ''; position: absolute; top: 28px; left: 10%; right: 10%; height: 2px; background: repeating-linear-gradient(90deg, var(--ink) 0 8px, transparent 8px 16px); opacity: 0.25; }
+    .step { position: relative; text-align: center; padding: 0 0.4rem; }
+    .step .ico { width: 58px; height: 58px; border-radius: 50%; margin: 0 auto 1.1rem; display: grid; place-items: center; background: var(--ink); color: var(--amber); font-size: 1.3rem; border: 5px solid #ebe6dc; position: relative; transition: transform 0.3s, background-color 0.3s, color 0.3s; }
+    .step:hover .ico { transform: scale(1.1); background: var(--amber); color: var(--ink); }
+    .step h3 { font-size: 1.05rem; margin-bottom: 0.4rem; }
+    .step p { font-size: 0.9rem; color: var(--muted); }
+    .step small { display: inline-block; margin-top: 0.6rem; font-weight: 700; font-size: 0.78rem; color: #8a6300; background: rgba(242, 169, 0, 0.18); padding: 0.2rem 0.6rem; border-radius: 999px; }
+    .process-photo { margin-top: 3.5rem; display: grid; grid-template-columns: 1.4fr 1fr; gap: 1.4rem; align-items: stretch; }
+    .process-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; min-height: 280px; }
+    .quote { background: var(--ink); color: #fff; border-radius: 10px; padding: 2.4rem; display: flex; flex-direction: column; justify-content: space-between; gap: 1.5rem; }
+    .quote p { font-family: var(--display); font-size: 1.6rem; font-weight: 700; line-height: 1.25; }
+    .quote p span { color: var(--amber); }
+
+    /* ---------- İletişim ---------- */
+    .contact-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 3rem; align-items: start; }
+    .info { background: var(--ink); color: #fff; border-radius: 10px; padding: 2.4rem; }
+    .info h3 { color: #fff; font-size: 1.4rem; margin-bottom: 1.6rem; }
+    .info ul { list-style: none; display: flex; flex-direction: column; gap: 1.3rem; margin-bottom: 2rem; }
+    .info li { display: flex; gap: 1rem; }
+    .info li i { width: 42px; height: 42px; border-radius: 8px; display: grid; place-items: center; background: rgba(242, 169, 0, 0.14); color: var(--amber); flex: none; }
+    .info li b { display: block; font-size: 0.85rem; color: rgba(255, 255, 255, 0.6); font-weight: 600; }
+    .info .btn { width: 100%; }
+    form.card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 2.4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    form.card h3 { grid-column: 1 / -1; font-size: 1.4rem; }
+    form.card label { display: flex; flex-direction: column; gap: 0.4rem; font-weight: 600; font-size: 0.9rem; color: var(--ink); }
+    form.card .full { grid-column: 1 / -1; }
+    form.card input, form.card textarea, form.card select { padding: 0.85rem 1rem; border-radius: 6px; border: 1px solid var(--line); background: var(--paper); transition: border-color 0.2s, background-color 0.2s; }
+    form.card input:focus, form.card textarea:focus, form.card select:focus { outline: none; border-color: var(--ink); background: #fff; }
+    form.card .btn { grid-column: 1 / -1; justify-self: start; }
+    .form-note { grid-column: 1 / -1; font-size: 0.9rem; color: var(--muted); }
+    .form-ok { grid-column: 1 / -1; display: none; padding: 1rem; border-radius: 6px; background: #e8f6ec; color: #166534; font-weight: 600; }
+    .form-ok.show { display: block; }
+
+    footer { background: var(--ink); color: rgba(255, 255, 255, 0.7); padding: 4rem 0 2rem; }
+    .foot { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 2rem; padding-bottom: 2.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+    .foot h4 { color: #fff; font-family: var(--display); margin-bottom: 1rem; }
+    .foot ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .foot a:hover { color: var(--amber); }
+    .foot p { max-width: 38ch; margin-top: 1rem; }
+    .legal { padding-top: 1.6rem; font-size: 0.8rem; line-height: 1.6; display: flex; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }
+    .legal .credits { max-width: 760px; }
+    .legal a { text-decoration: underline; }
+
+    .to-top { position: fixed; right: 22px; bottom: 22px; width: 48px; height: 48px; border-radius: 50%; border: 0; background: var(--amber); color: var(--ink); font-size: 1.1rem; cursor: pointer; box-shadow: 0 10px 24px -8px rgba(15, 31, 51, 0.5); opacity: 0; pointer-events: none; transform: translateY(10px); transition: opacity 0.3s, transform 0.3s; z-index: 40; }
+    .to-top.show { opacity: 1; pointer-events: auto; transform: none; }
+
+    .js .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1); }
+    .js .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; }
+      .js .reveal { opacity: 1; transform: none; }
+    }
+
+    @media (max-width: 1024px) {
+      .service-grid { grid-template-columns: repeat(2, 1fr); }
+      .project-grid { grid-template-columns: repeat(2, 1fr); }
+      .steps { grid-template-columns: repeat(3, 1fr); row-gap: 2.4rem; }
+      .steps::before { display: none; }
+    }
+    @media (max-width: 860px) {
+      nav.links { position: fixed; inset: var(--nav) 0 auto 0; flex-direction: column; align-items: stretch; gap: 0; background: var(--ink); padding: 0.4rem 20px 1.4rem; transform: translateY(-130%); transition: transform 0.3s ease; }
+      nav.links.open { transform: none; }
+      nav.links a { padding: 0.9rem 0; font-size: 1.1rem; }
+      nav.links .btn { margin-top: 0.6rem; min-height: 50px; }
+      .burger { display: block; }
+      .section { padding-block: 80px; }
+      .about-grid, .contact-grid, .process-photo { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-photo .badge { right: 16px; }
+      .hero-stats .container { grid-template-columns: repeat(2, 1fr); }
+      .hs:nth-child(3) { border-left: 0; }
+      .hs:nth-child(n+3) { border-top: 1px solid rgba(255, 255, 255, 0.1); }
+      .foot { grid-template-columns: 1fr 1fr; }
+      .foot > :first-child { grid-column: 1 / -1; }
+    }
+    @media (max-width: 600px) {
+      .project-grid, .service-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .checks { grid-template-columns: 1fr; }
+      form.card { grid-template-columns: 1fr; padding: 1.6rem; }
+      .hs { padding: 1.2rem 0.6rem; gap: 0.7rem; }
+      .hs b { font-size: 1.7rem; }
+      .hero-actions .btn { flex: 1 1 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header id="header">
+    <div class="container">
+      <a href="#" class="logo" aria-label="Nirengi Yapı ana sayfa">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="8" fill="#f2a900"/><path d="M20 8 33 31H7z" fill="none" stroke="#0f1f33" stroke-width="3.6" stroke-linejoin="round"/><circle cx="20" cy="23.5" r="3.2" fill="#0f1f33"/></svg>
+        <span>Nirengi Yapı<small>İnşaat · Kentsel Dönüşüm</small></span>
+      </a>
+      <button class="burger" id="burger" aria-label="Menüyü aç" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+      <nav class="links" id="links">
+        <a href="#hakkimizda">Hakkımızda</a>
+        <a href="#hizmetler">Hizmetler</a>
+        <a href="#projeler">Projeler</a>
+        <a href="#surec">Süreç</a>
+        <a href="#iletisim">İletişim</a>
+        <a href="#iletisim" class="btn btn-amber"><i class="fa-solid fa-helmet-safety"></i> Ücretsiz keşif</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-bg"><img src="img/hero.webp" width="1920" height="1200" alt="Gün batımında kule vinçli, iskeleli çok katlı bir bina inşaatı"></div>
+      <div class="container">
+        <div class="hero-inner reveal">
+          <span class="hero-tag"><i class="fa-solid fa-location-crosshairs"></i> 2014'ten beri İstanbul'da</span>
+          <h1>Sağlam temel, <span>güvenli</span> yarınlar</h1>
+          <p>Kentsel dönüşümden anahtar teslim konuta kadar; deprem yönetmeliğine uygun, zamanında teslim edilen yapılar.</p>
+          <div class="hero-actions">
+            <a href="#projeler" class="btn btn-amber"><i class="fa-solid fa-building"></i> Projelerimiz</a>
+            <a href="#iletisim" class="btn btn-line"><i class="fa-solid fa-clipboard-check"></i> Binanız için ücretsiz keşif</a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="container">
+          <div class="hs"><i class="fa-solid fa-building-circle-check"></i><div><b data-count="12">0</b><span>Teslim edilen proje</span></div></div>
+          <div class="hs"><i class="fa-solid fa-person-digging"></i><div><b data-count="2">0</b><span>Devam eden proje</span></div></div>
+          <div class="hs"><i class="fa-solid fa-key"></i><div><b data-count="186">0</b><span>Teslim edilen daire</span></div></div>
+          <div class="hs"><i class="fa-solid fa-shield-halved"></i><div><b>%100</b><span>Yönetmeliğe uygun</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hakkımızda -->
+    <section class="section" id="hakkimizda">
+      <div class="container about-grid">
+        <div class="about-photo reveal">
+          <img src="img/hakkimizda.webp" width="552" height="582" loading="lazy" alt="Bir kısmı cam cepheyle kaplanmış, katları süren yüksek bir bina inşaatı">
+          <div class="badge"><b>10+</b><span>yıllık tecrübe</span></div>
+        </div>
+        <div class="about-text reveal">
+          <h2 class="h2">Hakkımızda</h2>
+          <p class="lead">Nirengi Yapı; gayrimenkul geliştirme, kat karşılığı ve taahhüt, restorasyon ve üst yapı imalatlarında çalışan bir inşaat firmasıdır.</p>
+          <p>Adımızı ölçümcülerin sabit referans noktası olan nirengiden aldık: her projeye doğru ölçüyle, sağlam bir zeminde başlıyoruz. Önceliğimiz, içinde yaşayacak insanlara güvenli ve konforlu evler teslim etmek.</p>
+          <p>Projelerimizde güncel deprem yönetmeliğine uygunluk, birinci sınıf malzeme ve titiz işçilik esastır.</p>
+          <ul class="checks">
+            <li><i class="fa-solid fa-check"></i> Birinci sınıf malzeme</li>
+            <li><i class="fa-solid fa-check"></i> Zamanında teslim</li>
+            <li><i class="fa-solid fa-check"></i> Uzman mühendis kadrosu</li>
+            <li><i class="fa-solid fa-check"></i> Şeffaf sözleşme</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hizmetler -->
+    <section class="section services" id="hizmetler">
+      <div class="container">
+        <div class="head-row reveal">
+          <div><h2 class="h2">Hizmetlerimiz</h2><p class="lead">Arsadan anahtara kadar her aşama tek elden.</p></div>
+        </div>
+        <div class="service-grid reveal">
+          <div class="service"><div class="ico"><i class="fa-solid fa-city"></i></div><h3>Kentsel dönüşüm</h3><p>Riskli yapı tespitinden yeni binanın teslimine kadar tüm süreç ve resmi işlemler.</p></div>
+          <div class="service"><div class="ico"><i class="fa-solid fa-handshake"></i></div><h3>Kat karşılığı ve taahhüt</h3><p>Arsa sahipleriyle şeffaf paylaşım oranları ve noter onaylı sözleşme.</p></div>
+          <div class="service"><div class="ico"><i class="fa-solid fa-landmark"></i></div><h3>Restorasyon</h3><p>Tarihi ve eski yapılarda aslına uygun güçlendirme ve yenileme.</p></div>
+          <div class="service"><div class="ico"><i class="fa-solid fa-trowel-bricks"></i></div><h3>Üst yapı imalatları</h3><p>Kaba ve ince inşaat, cephe, yalıtım ve iç mekân uygulamaları.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projeler -->
+    <section class="section" id="projeler">
+      <div class="container">
+        <div class="head-row reveal">
+          <div><h2 class="h2">Projelerimiz</h2><p class="lead">Teslim ettiğimiz, sürdürdüğümüz ve yakında başlayacak projeler.</p></div>
+          <div class="filters" role="group" aria-label="Proje durumu">
+            <button type="button" aria-pressed="true" data-filter="hepsi">Tümü</button>
+            <button type="button" aria-pressed="false" data-filter="biten">Teslim edilen</button>
+            <button type="button" aria-pressed="false" data-filter="devam">Devam eden</button>
+            <button type="button" aria-pressed="false" data-filter="gelecek">Gelecek</button>
+          </div>
+        </div>
+        <div class="project-grid">
+          <article class="project reveal" data-status="biten">
+            <div class="project-img"><img src="img/proje-cephe.webp" width="1200" height="900" loading="lazy" alt="Kavisli cepheli, cam merdiven kuleli modern apartman"><span class="status biten"><i class="fa-solid fa-circle"></i> Teslim edildi</span></div>
+            <div class="project-body">
+              <h3>Dikilitaş Konakları</h3>
+              <div class="loc"><i class="fa-solid fa-location-dot"></i> Beşiktaş, Dikilitaş</div>
+              <div class="specs"><div><b>8</b>kat</div><div><b>24</b>daire</div><div><b>2023</b>teslim</div></div>
+            </div>
+          </article>
+          <article class="project reveal" data-status="biten">
+            <div class="project-img"><img src="img/proje-ic.webp" width="1200" height="900" loading="lazy" alt="Balkona açılan, modern mobilyalı aydınlık bir salon"><span class="status biten"><i class="fa-solid fa-circle"></i> Teslim edildi</span></div>
+            <div class="project-body">
+              <h3>Abbasağa Evleri</h3>
+              <div class="loc"><i class="fa-solid fa-location-dot"></i> Beşiktaş, Abbasağa</div>
+              <div class="specs"><div><b>6</b>kat</div><div><b>12</b>daire</div><div><b>2024</b>teslim</div></div>
+            </div>
+          </article>
+          <article class="project reveal" data-status="devam">
+            <div class="project-img"><img src="img/proje-demir.webp" width="1200" height="900" loading="lazy" alt="Kasklı ve yelekli işçiler döşeme demirini bağlarken"><span class="status devam"><i class="fa-solid fa-circle"></i> Devam ediyor</span></div>
+            <div class="project-body">
+              <h3>Cihannüma Rezidans</h3>
+              <div class="loc"><i class="fa-solid fa-location-dot"></i> Beşiktaş, Cihannüma</div>
+              <div class="specs"><div><b>10</b>kat</div><div><b>32</b>daire</div><div><b>2027</b>teslim</div></div>
+              <div class="progress"><div class="progress-top"><span>Kaba inşaat</span><span>%64</span></div><div class="bar"><span data-w="64"></span></div></div>
+            </div>
+          </article>
+          <article class="project reveal" data-status="devam">
+            <div class="project-img"><img src="img/proje-beton.webp" width="1200" height="900" loading="lazy" alt="Beton pompası kalıp içine beton dökerken şantiyeden genel görünüm"><span class="status devam"><i class="fa-solid fa-circle"></i> Devam ediyor</span></div>
+            <div class="project-body">
+              <h3>Türkali Apartmanı</h3>
+              <div class="loc"><i class="fa-solid fa-location-dot"></i> Beşiktaş, Türkali</div>
+              <div class="specs"><div><b>7</b>kat</div><div><b>14</b>daire</div><div><b>2026</b>teslim</div></div>
+              <div class="progress"><div class="progress-top"><span>Temel ve bodrum</span><span>%28</span></div><div class="bar"><span data-w="28"></span></div></div>
+            </div>
+          </article>
+          <article class="project reveal" data-status="gelecek">
+            <div class="project-img"><img src="img/proje-kule.webp" width="1200" height="900" loading="lazy" alt="Pencereleri düzenli sıralanmış çok katlı bir konut cephesi"><span class="status gelecek"><i class="fa-solid fa-circle"></i> Yakında</span></div>
+            <div class="project-body">
+              <h3>Yıldız Park Evleri</h3>
+              <div class="loc"><i class="fa-solid fa-location-dot"></i> Beşiktaş, Yıldız</div>
+              <div class="specs"><div><b>9</b>kat</div><div><b>27</b>daire</div><div><b>2028</b>hedef</div></div>
+            </div>
+          </article>
+          <article class="project reveal" data-status="gelecek">
+            <div class="project-img"><img src="img/hero.webp" width="1920" height="1200" loading="lazy" alt="Gün batımında vinçli bir şantiye"><span class="status gelecek"><i class="fa-solid fa-circle"></i> Yakında</span></div>
+            <div class="project-body">
+              <h3>Vişnezade Konutları</h3>
+              <div class="loc"><i class="fa-solid fa-location-dot"></i> Beşiktaş, Vişnezade</div>
+              <div class="specs"><div><b>5</b>kat</div><div><b>10</b>daire</div><div><b>2028</b>hedef</div></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Süreç -->
+    <section class="section process" id="surec">
+      <div class="container">
+        <div class="head-row reveal">
+          <div><h2 class="h2">Kentsel dönüşüm nasıl ilerler?</h2><p class="lead">İlk görüşmeden anahtar teslimine kadar beş adım. Her adımda ne olacağını önceden bilirsiniz.</p></div>
+        </div>
+        <ol class="steps reveal">
+          <li class="step"><div class="ico"><i class="fa-solid fa-magnifying-glass-location"></i></div><h3>Ücretsiz keşif</h3><p>Binanızı yerinde inceler, ilk değerlendirmeyi yaparız.</p><small>1 hafta</small></li>
+          <li class="step"><div class="ico"><i class="fa-solid fa-file-shield"></i></div><h3>Riskli yapı raporu</h3><p>Lisanslı kurumla deprem risk tespiti yaptırılır.</p><small>2–4 hafta</small></li>
+          <li class="step"><div class="ico"><i class="fa-solid fa-file-signature"></i></div><h3>Sözleşme ve proje</h3><p>Paylaşım oranı, mimari proje ve ruhsat süreci.</p><small>2–3 ay</small></li>
+          <li class="step"><div class="ico"><i class="fa-solid fa-helmet-safety"></i></div><h3>Yıkım ve inşaat</h3><p>Kira yardımı süresince düzenli ilerleme raporu.</p><small>14–20 ay</small></li>
+          <li class="step"><div class="ico"><i class="fa-solid fa-key"></i></div><h3>Anahtar teslim</h3><p>İskân alınır, daireler sahiplerine teslim edilir.</p><small>Teslim</small></li>
+        </ol>
+        <div class="process-photo reveal">
+          <img src="img/proje-demir.webp" width="1200" height="900" loading="lazy" alt="İşçiler döşeme demirini bağlarken">
+          <div class="quote">
+            <p>Her projeye <span>doğru ölçüyle</span> başlar, söz verdiğimiz gün teslim ederiz.</p>
+            <a href="#iletisim" class="btn btn-amber"><i class="fa-solid fa-clipboard-check"></i> Keşif randevusu al</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- İletişim -->
+    <section class="section" id="iletisim">
+      <div class="container">
+        <div class="head-row reveal"><div><h2 class="h2">İletişim</h2><p class="lead">Binanız için ücretsiz keşif isteyin; aynı hafta içinde dönüş yapalım.</p></div></div>
+        <div class="contact-grid">
+          <div class="info reveal">
+            <h3>Ofisimiz</h3>
+            <ul>
+              <li><i class="fa-solid fa-location-dot"></i><div><b>Adres</b>Örnek Caddesi No: 1, Beşiktaş / İstanbul</div></li>
+              <li><i class="fa-solid fa-phone"></i><div><b>Telefon</b>0212 000 00 00</div></li>
+              <li><i class="fa-solid fa-envelope"></i><div><b>E-posta</b>info@nirengiyapi.example</div></li>
+              <li><i class="fa-solid fa-clock"></i><div><b>Çalışma saatleri</b>Pazartesi – Cumartesi, 09:00 – 18:00</div></li>
+            </ul>
+            <a class="btn btn-amber" href="https://www.google.com/maps/search/?api=1&query=Be%C5%9Fikta%C5%9F%2C+%C4%B0stanbul" target="_blank" rel="noopener"><i class="fa-solid fa-diamond-turn-right"></i> Yol tarifi</a>
+          </div>
+          <form class="card reveal" id="form" novalidate>
+            <h3>Keşif talebi</h3>
+            <label>Ad soyad<input name="ad" required autocomplete="name"></label>
+            <label>Telefon<input name="tel" type="tel" required autocomplete="tel"></label>
+            <label>Bina konumu<input name="konum" placeholder="Mahalle, ilçe"></label>
+            <label>Bina yaşı
+              <select name="yas"><option>1999 öncesi</option><option>2000–2007</option><option>2007 sonrası</option><option>Bilmiyorum</option></select>
+            </label>
+            <label class="full">Mesajınız<textarea name="mesaj" rows="4" placeholder="Binanız ve beklentiniz hakkında kısaca bilgi verin"></textarea></label>
+            <button class="btn btn-ink" type="submit"><i class="fa-solid fa-paper-plane"></i> Talebi gönder</button>
+            <p class="form-ok" id="form-ok" role="status">Teşekkürler! Bu bir demo sitedir; bilgileriniz hiçbir yere gönderilmedi.</p>
+            <p class="form-note">Demo sürüm: form bilgileri kaydedilmez veya gönderilmez.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="foot">
+        <div>
+          <a href="#" class="logo"><svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="8" fill="#f2a900"/><path d="M20 8 33 31H7z" fill="none" stroke="#0f1f33" stroke-width="3.6" stroke-linejoin="round"/><circle cx="20" cy="23.5" r="3.2" fill="#0f1f33"/></svg><span>Nirengi Yapı</span></a>
+          <p>Güvenli, modern ve zamanında teslim edilen yaşam alanları.</p>
+        </div>
+        <div><h4>Sayfa</h4><ul><li><a href="#hakkimizda">Hakkımızda</a></li><li><a href="#hizmetler">Hizmetler</a></li><li><a href="#projeler">Projeler</a></li><li><a href="#surec">Süreç</a></li></ul></div>
+        <div><h4>Hizmetler</h4><ul><li>Kentsel dönüşüm</li><li>Kat karşılığı</li><li>Restorasyon</li><li>Üst yapı imalatları</li></ul></div>
+      </div>
+      <div class="legal">
+        <span>Bu site <a href="../../index.html">Orkun Tarlacı</a>'nın portfolyo çalışmasıdır; firma, projeler ve rakamlar örnektir.</span>
+        <span class="credits">Fotoğraflar (Wikimedia Commons):
+          <a href="https://commons.wikimedia.org/wiki/File:Surveying_a_multistorey_building_under_construction.jpg" target="_blank" rel="noopener">"Surveying a multistorey building under construction"</a>, CC BY 4.0 ·
+          <a href="https://commons.wikimedia.org/wiki/File:Curved_modern_apartment_building_with_glass_stairwell_tower.jpg" target="_blank" rel="noopener">"Curved modern apartment building…"</a>, CC0 ·
+          <a href="https://commons.wikimedia.org/wiki/File:Modern_living_room_with_stylish_furniture_and_a_view_of_the_outdoors_in_a_cozy_apartment_setting.jpg" target="_blank" rel="noopener">"Modern living room…"</a>, CC BY 2.0 ·
+          <a href="https://commons.wikimedia.org/wiki/File:Building_construction_Moira_Close_Broadwater_Farm_Haringey_2025_01.jpg" target="_blank" rel="noopener">"Building construction Moira Close…"</a>, CC BY-SA 4.0 ·
+          <a href="https://commons.wikimedia.org/wiki/File:Construction_site_with_concrete_pump_truck.JPG" target="_blank" rel="noopener">"Construction site with concrete pump truck"</a>, kamu malı ·
+          <a href="https://commons.wikimedia.org/wiki/File:Residential_Building_(216845175).jpeg" target="_blank" rel="noopener">"Residential Building"</a>, CC BY 3.0. Fotoğraflar kırpıldı.</span>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" id="to-top" aria-label="Yukarı dön"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script>
+    document.documentElement.classList.add('js');
+    const $ = (s) => document.querySelector(s);
+
+    // Menü ve kaydırma
+    const header = $('#header'), links = $('#links'), burger = $('#burger'), toTop = $('#to-top');
+    function onScroll() {
+      header.classList.toggle('solid', scrollY > 40 || links.classList.contains('open'));
+      toTop.classList.toggle('show', scrollY > 600);
+      let current = '';
+      document.querySelectorAll('main section[id]').forEach((s) => { if (scrollY + 120 >= s.offsetTop) current = s.id; });
+      links.querySelectorAll('a:not(.btn)').forEach((a) => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
+    }
+    addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    burger.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      burger.setAttribute('aria-expanded', String(open));
+      burger.setAttribute('aria-label', open ? 'Menüyü kapat' : 'Menüyü aç');
+      burger.innerHTML = open ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
+      onScroll();
+    });
+    links.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => { if (links.classList.contains('open')) burger.click(); }));
+    toTop.addEventListener('click', () => scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Proje filtresi
+    document.querySelectorAll('.filters button').forEach((btn) => btn.addEventListener('click', () => {
+      document.querySelectorAll('.filters button').forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+      const f = btn.dataset.filter;
+      document.querySelectorAll('.project').forEach((p) => p.classList.toggle('hide', f !== 'hepsi' && p.dataset.status !== f));
+    }));
+
+    // Sayaçlar, ilerleme çubukları ve bölüm girişleri
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function countUp(el) {
+      const target = +el.dataset.count;
+      if (reduce) { el.textContent = target + '+'; return; }
+      const start = performance.now();
+      const tick = (t) => {
+        const k = Math.min(1, (t - start) / 1400);
+        el.textContent = Math.round(target * (1 - Math.pow(1 - k, 3))) + (k === 1 ? '+' : '');
+        if (k < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }
+    const io = new IntersectionObserver((entries) => entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('in');
+      e.target.querySelectorAll('[data-count]').forEach(countUp);
+      e.target.querySelectorAll('.bar span').forEach((b) => { b.style.width = b.dataset.w + '%'; });
+      io.unobserve(e.target);
+    }), { rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('.reveal, .hero-stats').forEach((el) => io.observe(el));
+
+    // Demo form: hiçbir veri gönderilmez
+    $('#form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const f = e.target;
+      if (!f.ad.value.trim() || !f.tel.value.trim()) { (f.ad.value.trim() ? f.tel : f.ad).focus(); return; }
+      $('#form-ok').classList.add('show');
+      f.reset();
+    });
+  </script>
+</body>
+</html>
