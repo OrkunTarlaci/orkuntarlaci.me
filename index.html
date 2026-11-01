@@ -106,7 +106,9 @@
     .mobile-menu .phone-link { margin: 1rem 0 0; padding: 14px 28px; font-size: 1.1rem; border-radius: 10px; }
 
     /* Hero */
-    .hero { min-height: 92vh; display: flex; align-items: center; padding-top: var(--nav-height); }
+    .hero { min-height: 92vh; display: flex; align-items: center; padding-top: var(--nav-height); position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; width: 720px; height: 720px; right: -160px; top: 50%; transform: translateY(-50%); background: radial-gradient(circle, rgba(47, 124, 246, 0.16), transparent 65%); pointer-events: none; }
+    .hero .container { position: relative; }
     .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4rem; align-items: center; }
     .hero-content h1 { font-size: clamp(2.5rem, 5vw, 4.2rem); line-height: 1.08; margin-bottom: 1.4rem; font-weight: 700; }
     .hero-content h1 span { color: var(--accent); }
@@ -132,7 +134,8 @@
       border-radius: 16px; overflow: hidden;
     }
     .hero-card-top { padding: 2.2rem 2.2rem 1.6rem; }
-    .hero-card-top > i { font-size: 2.4rem; color: var(--accent); margin-bottom: 1.2rem; }
+    .hero-card-top > i { font-size: 2.4rem; color: var(--accent); margin-bottom: 1.2rem; animation: bob 3.2s ease-in-out infinite; }
+    @keyframes bob { 50% { transform: translateY(-5px); } }
     .hero-card h3 { font-size: 1.4rem; margin-bottom: 0.4rem; }
     .hero-card p { color: var(--text-muted); }
     .hero-card ul { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--border); }
@@ -153,13 +156,15 @@
       display: flex; flex-direction: column;
       background: var(--surface); border: 1px solid var(--border);
       border-radius: var(--radius); padding: 1.6rem;
-      transition: border-color 0.2s, background-color 0.2s;
+      transition: border-color 0.2s, background-color 0.2s, transform 0.25s ease;
     }
-    .service-card:hover { border-color: #3a3a42; background: var(--surface-2); }
+    .service-card:hover { border-color: color-mix(in srgb, var(--accent) 45%, transparent); background: var(--surface-2); transform: translateY(-3px); }
+    .service-card:hover .service-icon { background: var(--accent); color: #fff; transform: rotate(-8deg) scale(1.08); }
     .service-icon {
       width: 44px; height: 44px; border-radius: 10px;
       display: flex; align-items: center; justify-content: center;
       background: var(--surface-2); color: var(--accent); font-size: 1.15rem; margin-bottom: 1.1rem;
+      transition: background-color 0.25s, color 0.25s, transform 0.3s ease;
     }
     .service-card h3 { font-size: 1.1rem; margin-bottom: 0.45rem; }
     .service-card p { color: var(--text-muted); font-size: 0.93rem; flex-grow: 1; }
@@ -185,37 +190,60 @@
     /* Projeler */
     .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
     .project-card {
+      --c: var(--accent);
       display: flex; flex-direction: column;
       background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius); overflow: hidden;
-      transition: border-color 0.2s, transform 0.25s ease;
+      border-radius: 16px; overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s ease, box-shadow 0.3s;
     }
-    .project-card:hover { border-color: #3a3a42; transform: translateY(-3px); }
-    .project-shot { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: var(--surface-2); border-bottom: 1px solid var(--border); }
-    .project-shot img { width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform 0.5s ease; }
-    .project-card:hover .project-shot img { transform: scale(1.04); }
-    .project-shot.split { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--border); }
-    .project-body { display: flex; flex-direction: column; flex-grow: 1; padding: 1.2rem 1.3rem 1.3rem; }
-    .project-title { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.5rem; }
-    .project-title > i, .project-title > svg {
-      flex: none; width: 34px; height: 34px; border-radius: 8px;
-      display: inline-flex; align-items: center; justify-content: center;
-      background: var(--surface-2); color: var(--accent); font-size: 0.95rem;
+    .project-card:hover { border-color: color-mix(in srgb, var(--c) 55%, transparent); transform: translateY(-6px); box-shadow: 0 18px 40px -22px color-mix(in srgb, var(--c) 70%, transparent); }
+    .project-visual {
+      position: relative; aspect-ratio: 16 / 10; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      background: radial-gradient(circle at 50% 55%, color-mix(in srgb, var(--c) 30%, transparent), transparent 62%), color-mix(in srgb, var(--c) 9%, var(--surface-2));
     }
-    .project-title > svg { padding: 7px; }
-    .project-card h3 { font-size: 1.08rem; line-height: 1.3; }
+    .project-visual::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: radial-gradient(color-mix(in srgb, var(--c) 30%, transparent) 1px, transparent 1px);
+      background-size: 18px 18px; opacity: 0.5;
+      -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 20%, transparent 75%);
+      mask-image: radial-gradient(circle at 50% 50%, #000 20%, transparent 75%);
+    }
+    .project-visual > i, .project-visual > svg {
+      position: relative; font-size: 4.6rem; width: 1em; height: 1em; text-align: center; line-height: 1;
+      color: var(--c); filter: drop-shadow(0 10px 24px color-mix(in srgb, var(--c) 45%, transparent));
+      transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1.3);
+    }
+    .project-visual > i.ghost {
+      position: absolute; right: -0.12em; bottom: -0.22em; font-size: 9rem; width: auto; height: auto;
+      opacity: 0.07; filter: none; transform: rotate(-14deg);
+    }
+    .project-card:hover .project-visual > i:not(.ghost), .project-card:hover .project-visual > svg { transform: scale(1.14) rotate(-6deg); }
+    .project-card:hover .project-visual > i.ghost { transform: rotate(-4deg) scale(1.05); }
+    .project-body { display: flex; flex-direction: column; flex-grow: 1; padding: 1.25rem 1.35rem 1.35rem; }
+    .project-card h3 { font-size: 1.15rem; line-height: 1.3; margin-bottom: 0.45rem; }
     .project-card p { color: var(--text-muted); font-size: 0.92rem; flex-grow: 1; }
-    .project-meta { display: flex; justify-content: space-between; align-items: center; gap: 0.8rem; margin-top: 1rem; font-size: 0.85rem; }
+    .project-meta { display: flex; justify-content: space-between; align-items: center; gap: 0.8rem; margin-top: 1.1rem; padding-top: 0.9rem; border-top: 1px solid var(--border); font-size: 0.85rem; }
     .project-meta span { color: var(--text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .project-meta b { color: var(--accent); font-weight: 600; display: inline-flex; align-items: center; gap: 0.4rem; flex: none; }
+    .project-meta b { color: var(--c); font-weight: 600; display: inline-flex; align-items: center; gap: 0.4rem; flex: none; }
     .project-meta b i { font-size: 0.75rem; transition: transform 0.2s; }
-    .project-card:hover .project-meta b i { transform: translate(2px, -2px); }
-    .project-card.featured { grid-column: 1 / -1; display: grid; grid-template-columns: 1.6fr 1fr; }
-    .project-shot.split img { object-position: left top; }
-    .project-card.featured .project-shot { aspect-ratio: auto; height: 100%; min-height: 320px; border-bottom: 0; border-right: 1px solid var(--border); }
-    .project-card.featured .project-body { padding: 1.6rem; justify-content: center; }
-    .project-card.featured h3 { font-size: 1.3rem; }
-    .tag { display: inline-block; font-size: 0.78rem; font-weight: 600; color: var(--text-muted); background: var(--surface-2); padding: 0.2rem 0.55rem; border-radius: 6px; margin: 0 0.3rem 0.8rem 0; }
+    .project-card:hover .project-meta b i { transform: translate(3px, -3px); }
+    .p-akilli { --c: #22c55e; }
+    .p-havakare { --c: #38bdf8; }
+    .p-dokunus { --c: #f97316; }
+    .p-eller { --c: #3b82f6; }
+    .p-obez { --c: #eab308; }
+    .p-ebru { --c: #f472b6; }
+    .p-faruk { --c: #d9b48c; }
+    @media (min-width: 961px) { .p-faruk { grid-column: 2; } }
+
+    /* Kayan şerit */
+    .ticker { overflow: hidden; border-block: 1px solid var(--border); background: var(--surface); padding: 1rem 0; }
+    .ticker-track { display: flex; gap: 2.6rem; width: max-content; animation: ticker 38s linear infinite; }
+    .ticker:hover .ticker-track { animation-play-state: paused; }
+    .ticker span { display: inline-flex; align-items: center; gap: 0.6rem; font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 1.05rem; color: var(--text-muted); white-space: nowrap; }
+    .ticker i { color: var(--accent); }
+    @keyframes ticker { to { transform: translateX(-50%); } }
 
     /* Contact */
     .contact-wrapper {
@@ -248,8 +276,6 @@
     /* Responsive */
     @media (max-width: 960px) {
       .projects-grid { grid-template-columns: repeat(2, 1fr); }
-      .project-card.featured { grid-template-columns: 1fr; }
-      .project-card.featured .project-shot { border-right: 0; border-bottom: 1px solid var(--border); aspect-ratio: 16 / 10; height: auto; min-height: 0; }
     }
     @media (max-width: 900px) {
       .desktop-nav { display: none; }
@@ -274,6 +300,7 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .js .reveal { opacity: 1; transform: none; transition: none; }
+      .ticker-track, .hero-card-top > i { animation: none; }
       * { transition-duration: 0.01ms !important; }
     }
   </style>
@@ -336,6 +363,8 @@
         </div>
       </div>
     </section>
+
+    <div class="ticker" aria-hidden="true"><div class="ticker-track"><span><i class="fa-brands fa-windows"></i>Format & Windows</span><span><i class="fa-solid fa-hard-drive"></i>SSD yükseltme</span><span><i class="fa-solid fa-microchip"></i>Anakart tamiri</span><span><i class="fa-solid fa-virus-slash"></i>Virüs temizliği</span><span><i class="fa-solid fa-laptop"></i>Ekran değişimi</span><span><i class="fa-solid fa-fan"></i>Fan temizliği</span><span><i class="fa-solid fa-database"></i>Veri kurtarma</span><span><i class="fa-solid fa-chalkboard"></i>Akıllı tahta</span><span><i class="fa-solid fa-code"></i>Web sitesi</span><span><i class="fa-brands fa-windows"></i>Format & Windows</span><span><i class="fa-solid fa-hard-drive"></i>SSD yükseltme</span><span><i class="fa-solid fa-microchip"></i>Anakart tamiri</span><span><i class="fa-solid fa-virus-slash"></i>Virüs temizliği</span><span><i class="fa-solid fa-laptop"></i>Ekran değişimi</span><span><i class="fa-solid fa-fan"></i>Fan temizliği</span><span><i class="fa-solid fa-database"></i>Veri kurtarma</span><span><i class="fa-solid fa-chalkboard"></i>Akıllı tahta</span><span><i class="fa-solid fa-code"></i>Web sitesi</span></div></div>
 
     <!-- ============ HİZMETLER ============ -->
     <section id="services" class="section-padding">
@@ -423,79 +452,66 @@
         </div>
         <div class="projects-grid">
 
-          <a href="Siteler/akillitahtalar/index.html" target="_blank" rel="noopener" class="project-card reveal">
-            <div class="project-shot"><img src="img/projeler/akillitahtalar.webp" width="1200" height="750" loading="lazy" alt="Akıllı Tahtalar sitesinin ana sayfası"></div>
+          <a href="Siteler/akillitahtalar/index.html" target="_blank" rel="noopener" class="project-card p-akilli reveal">
+            <div class="project-visual"><i class="ghost fa-solid fa-chalkboard" aria-hidden="true"></i><i class="fa-solid fa-chalkboard" aria-hidden="true"></i></div>
             <div class="project-body">
-              <div class="project-title"><i class="fa-solid fa-chalkboard"></i><h3>Akıllı Tahtalar</h3></div>
+              <h3>Akıllı Tahtalar</h3>
               <p>Okullar için akıllı tahta imajları ve kurulum rehberi.</p>
-              <div class="project-meta"><span>Eğitim</span><b>İncele <i class="fa-solid fa-arrow-up-right-from-square"></i></b></div>
+              <div class="project-meta"><span>Eğitim</span><b>Siteye git <i class="fa-solid fa-arrow-up-right-from-square"></i></b></div>
             </div>
           </a>
 
-          <a href="https://havakare.com/" target="_blank" rel="noopener" class="project-card reveal">
-            <div class="project-shot"><img src="img/projeler/havakare.webp" width="1200" height="750" loading="lazy" alt="Havakare sitesinin ana sayfası"></div>
+          <a href="https://havakare.com/" target="_blank" rel="noopener" class="project-card p-havakare reveal">
+            <div class="project-visual"><svg viewBox="0 0 24 24" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="stroke:currentColor; fill:none;"><rect x="9" y="9.5" width="6" height="5" rx="1.5"/><line x1="9.5" y1="10" x2="6.5" y2="7"/><line x1="14.5" y1="10" x2="17.5" y2="7"/><line x1="9.5" y1="14" x2="6.5" y2="17"/><line x1="14.5" y1="14" x2="17.5" y2="17"/><circle cx="5" cy="5.5" r="2.3"/><circle cx="19" cy="5.5" r="2.3"/><circle cx="5" cy="18.5" r="2.3"/><circle cx="19" cy="18.5" r="2.3"/></svg></div>
             <div class="project-body">
-              <div class="project-title">
-                <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="stroke:currentColor; fill:none;">
-                  <rect x="9" y="9.5" width="6" height="5" rx="1.5"/>
-                  <line x1="9.5" y1="10" x2="6.5" y2="7"/><line x1="14.5" y1="10" x2="17.5" y2="7"/>
-                  <line x1="9.5" y1="14" x2="6.5" y2="17"/><line x1="14.5" y1="14" x2="17.5" y2="17"/>
-                  <circle cx="5" cy="5.5" r="2.3"/><circle cx="19" cy="5.5" r="2.3"/>
-                  <circle cx="5" cy="18.5" r="2.3"/><circle cx="19" cy="18.5" r="2.3"/>
-                </svg>
-                <h3>Havakare</h3>
-              </div>
+              <h3>Havakare</h3>
               <p>Drone ve hava çekimi hizmetleri için tanıtım sitesi.</p>
-              <div class="project-meta"><span>havakare.com</span><b>İncele <i class="fa-solid fa-arrow-up-right-from-square"></i></b></div>
+              <div class="project-meta"><span>havakare.com</span><b>Siteye git <i class="fa-solid fa-arrow-up-right-from-square"></i></b></div>
             </div>
           </a>
 
-          <a href="https://xn--ustadokunuteknikservis-3ge.com/" target="_blank" rel="noopener" class="project-card reveal">
-            <div class="project-shot"><img src="img/projeler/ustadokunus.webp" width="1200" height="750" loading="lazy" alt="Usta Dokunuş Teknik Servis sitesinin ana sayfası"></div>
+          <a href="https://xn--ustadokunuteknikservis-3ge.com/" target="_blank" rel="noopener" class="project-card p-dokunus reveal">
+            <div class="project-visual"><i class="ghost fa-solid fa-screwdriver-wrench" aria-hidden="true"></i><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i></div>
             <div class="project-body">
-              <div class="project-title"><i class="fa-solid fa-screwdriver-wrench"></i><h3>Usta Dokunuş Teknik Servis</h3></div>
+              <h3>Usta Dokunuş Teknik Servis</h3>
               <p>Esenyurt beyaz eşya, kombi ve klima servisi tanıtım sitesi.</p>
-              <div class="project-meta"><span>ustadokunuşteknikservis.com</span><b>İncele <i class="fa-solid fa-arrow-up-right-from-square"></i></b></div>
+              <div class="project-meta"><span>ustadokunuşteknikservis.com</span><b>Siteye git <i class="fa-solid fa-arrow-up-right-from-square"></i></b></div>
             </div>
           </a>
 
-          <a href="https://ustaellerteknikservis.com/" target="_blank" rel="noopener" class="project-card reveal">
-            <div class="project-shot"><img src="img/projeler/ustaeller.webp" width="1200" height="750" loading="lazy" alt="Usta Eller Teknik Servis sitesinin ana sayfası"></div>
+          <a href="https://ustaellerteknikservis.com/" target="_blank" rel="noopener" class="project-card p-eller reveal">
+            <div class="project-visual"><i class="ghost fa-solid fa-toolbox" aria-hidden="true"></i><i class="fa-solid fa-toolbox" aria-hidden="true"></i></div>
             <div class="project-body">
-              <div class="project-title"><i class="fa-solid fa-toolbox"></i><h3>Usta Eller Teknik Servis</h3></div>
+              <h3>Usta Eller Teknik Servis</h3>
               <p>Beyaz eşya ve teknik servis için kurumsal tanıtım sitesi.</p>
-              <div class="project-meta"><span>ustaellerteknikservis.com</span><b>İncele <i class="fa-solid fa-arrow-up-right-from-square"></i></b></div>
+              <div class="project-meta"><span>ustaellerteknikservis.com</span><b>Siteye git <i class="fa-solid fa-arrow-up-right-from-square"></i></b></div>
             </div>
           </a>
 
-          <a href="https://obezbilisim.com/" target="_blank" rel="noopener" class="project-card reveal">
-            <div class="project-shot"><img src="img/projeler/obez.webp" width="1200" height="750" loading="lazy" alt="Obez Bilişim sitesinin üç boyutlu açılış sahnesi"></div>
+          <a href="https://obezbilisim.com/" target="_blank" rel="noopener" class="project-card p-obez reveal">
+            <div class="project-visual"><i class="ghost fa-solid fa-laptop-code" aria-hidden="true"></i><i class="fa-solid fa-laptop-code" aria-hidden="true"></i></div>
             <div class="project-body">
-              <div class="project-title"><i class="fa-solid fa-laptop-code"></i><h3>Obez Bilişim</h3></div>
+              <h3>Obez Bilişim</h3>
               <p>Beşiktaş'ta bilgisayar, yazılım ve IT desteği. 3D açılış sahneli site.</p>
-              <div class="project-meta"><span>obezbilisim.com</span><b>İncele <i class="fa-solid fa-arrow-up-right-from-square"></i></b></div>
+              <div class="project-meta"><span>obezbilisim.com</span><b>Siteye git <i class="fa-solid fa-arrow-up-right-from-square"></i></b></div>
             </div>
           </a>
 
-          <a href="Siteler/Ebru-Cicek/index.html" target="_blank" rel="noopener" class="project-card reveal">
-            <div class="project-shot"><img src="img/projeler/ebru.webp" width="1200" height="750" loading="lazy" alt="Ebru Çiçek sitesinin ana sayfası"></div>
+          <a href="Siteler/Ebru-Cicek/index.html" target="_blank" rel="noopener" class="project-card p-ebru reveal">
+            <div class="project-visual"><i class="ghost fa-solid fa-seedling" aria-hidden="true"></i><i class="fa-solid fa-seedling" aria-hidden="true"></i></div>
             <div class="project-body">
-              <div class="project-title"><i class="fa-solid fa-seedling"></i><h3>Ebru Çiçek</h3></div>
+              <h3>Ebru Çiçek</h3>
               <p>Butik çiçek atölyesi: WhatsApp siparişli, kendi buketini tasarlama özellikli.</p>
-              <div class="project-meta"><span>Çiçekçi</span><b>İncele <i class="fa-solid fa-arrow-up-right-from-square"></i></b></div>
+              <div class="project-meta"><span>Çiçekçi</span><b>Siteye git <i class="fa-solid fa-arrow-up-right-from-square"></i></b></div>
             </div>
           </a>
 
-          <a href="Siteler/Faruk-Demirezen-Vitrin/index.html" target="_blank" rel="noopener" class="project-card featured reveal">
-            <div class="project-shot split">
-              <img src="img/projeler/faruk-site.webp" width="1200" height="750" loading="lazy" alt="Faruk Demirezen kuaför sitesinin ana sayfası">
-              <img src="img/projeler/faruk-panel.webp" width="1200" height="750" loading="lazy" alt="Faruk Demirezen yönetim panelinin genel bakış ekranı">
-            </div>
+          <a href="Siteler/Faruk-Demirezen-Vitrin/index.html" target="_blank" rel="noopener" class="project-card p-faruk reveal">
+            <div class="project-visual"><i class="ghost fa-solid fa-scissors" aria-hidden="true"></i><i class="fa-solid fa-scissors" aria-hidden="true"></i></div>
             <div class="project-body">
-              <div class="project-title"><i class="fa-solid fa-scissors"></i><h3>Faruk Demirezen</h3></div>
-              <div><span class="tag">Online randevu</span><span class="tag">Yönetim paneli</span></div>
-              <p>Erkek kuaförü için online randevu sitesi ve randevuların yönetildiği panel. Açılan sayfada site ve panel yan yana; panel örnek verilerle çalışır, işlem kaydetmez.</p>
-              <div class="project-meta"><span>Site + panel demosu</span><b>İncele <i class="fa-solid fa-arrow-up-right-from-square"></i></b></div>
+              <h3>Faruk Demirezen</h3>
+              <p>Erkek kuaförü için online randevu sitesi ve yönetim paneli, yan yana.</p>
+              <div class="project-meta"><span>Site + panel demosu</span><b>Siteye git <i class="fa-solid fa-arrow-up-right-from-square"></i></b></div>
             </div>
           </a>
 
