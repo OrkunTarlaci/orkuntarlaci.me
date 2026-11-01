@@ -188,7 +188,8 @@
     .stat-box.wide strong { display: block; color: var(--text); }
 
     /* Projeler */
-    .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
+    .projects-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1.4rem; }
+    .projects-grid > .project-card { grid-column: span 2; }
     .project-card {
       --c: var(--accent);
       display: flex; flex-direction: column;
@@ -235,7 +236,12 @@
     .p-obez { --c: #eab308; }
     .p-ebru { --c: #f472b6; }
     .p-faruk { --c: #d9b48c; }
-    @media (min-width: 961px) { .p-faruk { grid-column: 2; } }
+    .p-insaat { --c: #ef4444; }
+    /* Son sıra: Faruk, Usta Eller ile Obez'in; inşaat, Obez ile Ebru Çiçek'in ortasında */
+    @media (min-width: 961px) {
+      .projects-grid > .p-faruk { grid-column: 2 / span 2; }
+      .projects-grid > .p-insaat { grid-column: 4 / span 2; }
+    }
 
     /* Kayan şerit */
     .ticker { overflow: hidden; border-block: 1px solid var(--border); background: var(--surface); padding: 1rem 0; }
@@ -276,6 +282,7 @@
     /* Responsive */
     @media (max-width: 960px) {
       .projects-grid { grid-template-columns: repeat(2, 1fr); }
+      .projects-grid > .project-card { grid-column: auto; }
     }
     @media (max-width: 900px) {
       .desktop-nav { display: none; }
@@ -437,7 +444,7 @@
         </div>
         <div class="stats reveal">
           <div class="stat-box"><i class="fa-solid fa-clock-rotate-left"></i><span class="stat-number">5+</span><span>Yıl deneyim</span></div>
-          <div class="stat-box"><i class="fa-solid fa-globe"></i><span class="stat-number">7</span><span>Web projesi</span></div>
+          <div class="stat-box"><i class="fa-solid fa-globe"></i><span class="stat-number">8</span><span>Web projesi</span></div>
           <div class="stat-box wide"><i class="fa-solid fa-building"></i><span><strong>Acıbadem Hastanesi · Simas Yatırım</strong><span style="color:var(--text-muted)">IT stajı</span></span></div>
         </div>
       </div>
@@ -512,6 +519,15 @@
               <h3>Faruk Demirezen</h3>
               <p>Erkek kuaförü için online randevu sitesi ve yönetim paneli, yan yana.</p>
               <div class="project-meta"><span>Site + panel demosu</span><b>Siteye git <i class="fa-solid fa-arrow-up-right-from-square"></i></b></div>
+            </div>
+          </a>
+
+          <a href="Siteler/SA Yapı İnşaat Site/index.html" target="_blank" rel="noopener" class="project-card p-insaat reveal">
+            <div class="project-visual"><i class="ghost fa-solid fa-helmet-safety" aria-hidden="true"></i><i class="fa-solid fa-helmet-safety" aria-hidden="true"></i></div>
+            <div class="project-body">
+              <h3>SA Yapı İnşaat</h3>
+              <p>İnşaat firması için konut projelerini ve kurumsal kimliği anlatan tanıtım sitesi.</p>
+              <div class="project-meta"><span>İnşaat</span><b>Siteye git <i class="fa-solid fa-arrow-up-right-from-square"></i></b></div>
             </div>
           </a>
 
